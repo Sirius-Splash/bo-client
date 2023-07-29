@@ -6,10 +6,10 @@
    - Ticket scopes: `global`, `auth`, `chat`, `planner`, `social`, `tracker`
 3. Try to create tickets with a clear "done" condition - use a checklist if applicable
 4. Add yourself to a ticket to claim it
-5. Before starting work, move the ticket to the "In Progress" board
-6. After submitting a pull request, move the ticket to the "Under Review" board
-7. If changes are requested, move the ticket to the "Changes Requested" board
-8. After making changes, move the ticket back to the "Under Review" board
+5. Before starting work, move the ticket to the "In progress" board
+6. After submitting a pull request, move the ticket to the "Staged for review" board
+7. If changes are requested, move the ticket to the "Changes requested" board
+8. After making changes, move the ticket back to the "Staged for review" board
 
 # Git Workflow
 1. Claim a ticket
@@ -27,6 +27,8 @@
    - `git rebase master`
    - Run your code again to confirm that it still functions
 6. Make a pull request
+   - Use the name of your trello ticket in your PR title and move the ticket to the "Staged for review" list 
+   - Put any additional notes (potential conflicts, scoping comments, compatibility issues) in the PR body
 
 # React + TypeScript + Vite
 
