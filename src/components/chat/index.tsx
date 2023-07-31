@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 interface Message {
-  message_id: number;
+  id: number;
   sender_id: number;
   recipient_id: number;
-  message_content: string;
-  timestamp: string;
+  chat: string;
+  created_at: string;
 }
 
 // ***----- DIRECT MESSAGE LIST COMPONENT -----***
@@ -24,14 +24,15 @@ const DirectMessageList: React.FC<{ currentUserId: number, otherUserId: number}>
   return (
     <div className="chat bg-primary text-secondary">
       {messages.map(msg => (
-        <div key={msg.message_id} className={`chat-bubble ${msg.sender_id === currentUserId ? 'right bg-accent text-primary' : 'left bg-neutral text-primary'}`}>
-          <p>{msg.message_content}</p>
+        <div key={msg.id} className={`chat-bubble ${msg.sender_id === currentUserId ? 'right bg-accent text-primary' : 'left bg-neutral text-primary'}`}>
+          <p>{msg.chat}</p>
           <div className="chat-metadata">
-            <p>{msg.sender_id === currentUserId ? 'You' : 'Them'</p>
-            <p>{new Date(msg.timestamp).toLocaleString()}</p>
+            <p>{msg.sender_id === currentUserId ? 'You' : 'Them'}</p>
+            <p>{new Date(msg.created_at).toLocaleString()}</p>
           </div>
         </div>
       ))}
     </div>
-  )
-}
+  );
+
+export default DirectMessageList;
