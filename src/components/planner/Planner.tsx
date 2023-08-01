@@ -11,7 +11,7 @@ const Planner = () => {
   const getExercises = () => {
     axios.get(`https://api.api-ninjas.com/v1/exercises?type=${workoutType}`, {
       headers: {
-        'X-Api-Key': 'ILx8qYo5tzMqnOLPwy8ofQ==3nBNBQN18CJH1Pxl'
+        'X-Api-Key': ''
       }
     })
     .then(response => {

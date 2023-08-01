@@ -19,7 +19,6 @@ const Exercise: React.FunctionComponent<ExerciseProps> = (props) => {
         <div>{equipment}</div>
         <div>Sets: 3 | Reps: 10-15</div>
       </div>
-
     </React.Fragment>
   )
 };
