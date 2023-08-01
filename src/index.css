@@ -1,8 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+/* @import "daisyui/dist/full.css"; Import DaisyUI styles. common pattern used for importing CSS files in CSS like how Tailwind CSS files are imported. The path 'daisyui/dist/full.css' points to the full set of DaisyUI styles, located in the dist directory of the daisyui package. */
 
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -70,4 +71,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
