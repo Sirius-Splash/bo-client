@@ -1,3 +1,4 @@
+import '../../App.css';
 import { useState } from "react";
 import  { FC, Dispatch, SetStateAction } from "react";
 
@@ -19,7 +20,7 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
 
         <div>
           <label className="label">
-            <span className="label-text">Enter a username: </span>
+            <span className="label-text text-primary">Enter a username: </span>
           </label>
         </div>
 
@@ -28,13 +29,13 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
               type="text"
               name="username"
               placeholder="ex: Buffboi420"
-              className="input input-bordered w-full max-w-xs"
+              className="input bg-secondary input-bordered w-full max-w-xs"
             />
         </div>
 
         <div>
           <label className="label">
-            <span className="label-text">Create a password: </span>
+            <span className="label-text text-primary">Create a password: </span>
           </label>
         </div>
 
@@ -43,7 +44,7 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
               type="text"
               name="password"
               placeholder="Enter password here"
-              className="input input-bordered w-full max-w-xs"
+              className="input bg-secondary input-bordered w-full max-w-xs"
             />
         </div>
 
@@ -54,7 +55,7 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
 
     <div>
       <ul className="steps">
-        <li className="step step-primary">Create Account</li>
+        <li className="step step-accent">Create Account</li>
         <li className="step">Personal Info</li>
         <li className="step">Purchase</li>
         <li className="step">Receive Product</li>

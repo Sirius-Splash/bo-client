@@ -1,6 +1,8 @@
+import '../../App.css';
 import { useState } from "react";
 import  { Dispatch, SetStateAction } from "react";
 import CreateAccount from "./CreateAccount";
+import PersonalInfo from "./PersonalInfo";
 
 // type IAccountDetails = {
 //   username: string;
@@ -21,6 +23,7 @@ import CreateAccount from "./CreateAccount";
 
 const SignUp:React.FC = () => {
   const [accountDetails, setAccountDetails] = useState<any>({});
+  let step = 1;
 
   const handleCreateAccount = (e) => {
     e.preventDefault();
@@ -30,53 +33,19 @@ const SignUp:React.FC = () => {
 
   return (
     <div>
-      <CreateAccount
-        handleCreateAccount={handleCreateAccount}
-      />
+      {
+        step === 1 ?
+          <CreateAccount
+            handleCreateAccount={handleCreateAccount}
+          />
+        : step == 2 ?
+          <PersonalInfo
+
+          />
+        : 'Hmmm'
+      }
     </div>
   );
 }
 
 export default SignUp;
-
-
-// // import { useState } from "react";
-// // import React, { Dispatch, SetStateAction } from "react";
-// import CreateAccount from "./CreateAccount";
-
-// // interface IAccountDetails {
-// //   username: string;
-// //   password: string;
-// //   name: string;
-// //   email: string;
-// //   age: number;
-// //   sex: string;
-// //   height: number;
-// //   weight: number;
-// //   experience: number;
-// //   goals: string;
-// //   equipment: boolean;
-// //   trainer: boolean;
-// //   profile_pic: string;
-// //   online_status: boolean;
-// // }
-
-// const SignUp = () => {
-//   // const [accountDetails, setAccountDetails] = useState({});
-
-//   // const handleCreateAccount = () => {
-//     // e.preventDefault();
-//     // console.log(e.target.name);
-
-//   // };
-
-//   return (
-//     <div>
-//       <CreateAccount
-//         // handleCreateAccount={handleCreateAccount}
-//       />
-//     </div>
-//   );
-// }
-
-// export default SignUp;

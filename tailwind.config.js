@@ -11,7 +11,17 @@ module.exports = {
     },
   },
   daisyui: {
-    themes: ["light"],
+    themes: [
+      {
+        gymbuddy: {
+          primary: "#FCFCFB",
+          secondary: "#030303",
+          accent: "#CA0000",
+          neutral: "#3F4242",
+        }
+      },
+      "dark"
+    ],
   },
   plugins: [require("daisyui")],
 }
