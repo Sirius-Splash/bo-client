@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import './App.css'
 import Auth from './components/auth/index';
 import Social from './components/social/index';
@@ -16,6 +17,13 @@ function App() {
         <Route path="*" element={<Notfound/>}/>
       </Routes>
     </BrowserRouter>
+=======
+import PostForm from './components/social/PostForm.tsx'
+
+function App() {
+  return (
+      <PostForm />
+>>>>>>> 851cd16 (worked on postform)
   )
 }
 
