@@ -33,14 +33,14 @@ const DirectMessageList: React.FC<{
   }, [currentUserId, otherUserId]);
 
   return (
-    <div className="chat bg-base-100 text-secondary">
+    <div className="chat bg-base-100 text-secondary flex flex-col gap-1 my-2">
       {messages.map((msg) => (
         <div
           key={msg.id}
           className={`chat-bubble ${
             msg.sender_id === currentUserId
-              ? "right bg-accent text-primary"
-              : "left bg-neutral text-primary"
+              ? "self-end bg-accent text-primary"
+              : "self-start bg-neutral text-primary"
           }`}>
           <p>{msg.chat}</p>
           <div className="chat-metadata">
