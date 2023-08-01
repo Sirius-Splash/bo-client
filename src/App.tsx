@@ -1,11 +1,16 @@
-import './App.css'
-import Auth from './components/auth/index';
+import "./App.css";
+import Auth from "./components/auth/index";
+import DirectMessageSender from "./components/chat/DMSender";
+import DirectMessageList from "./components/chat/DMList";
 
 function App() {
-
   return (
-    <Auth />
-  )
+    <>
+      <Auth />
+      <DirectMessageList />
+      <DirectMessageSender />
+    </>
+  );
 }
 
-export default App
+export default App;
