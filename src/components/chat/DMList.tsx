@@ -32,7 +32,7 @@ const DirectMessageList: React.FC<{
   }, [currentUserId, otherUserId]);
 
   return (
-    <div className="chat bg-primary text-secondary">
+    <div className="chat bg-base-100 text-secondary">
       {messages.map((msg) => (
         <div
           key={msg.id}

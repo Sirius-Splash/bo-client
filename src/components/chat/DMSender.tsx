@@ -36,15 +36,15 @@ const DirectMessageSender: React.FC<{
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-primary">
+      className="bg-base-100 flex justify-center items-center">
       <textarea
         value={messageContent}
         onChange={(e) => setMessageContent(e.target.value)}
-        className="text-secondary"
+        className="text-base-100-bold bg-secondary"
       />
       <button
         type="submit"
-        className="bg-accent text-primary ml-2">
+        className="bg-accent text-primary ml-2 mb-2">
         Send
       </button>
     </form>
