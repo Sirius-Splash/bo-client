@@ -8,8 +8,10 @@ import  { FC, Dispatch, SetStateAction } from "react";
 //   // handleCreateAccount: Dispatch<SetStateAction<>>
 // }
 
-const CreateAccount:FC = ({ handleCreateAccount }) => {
+const CreateAccount = ({ handleCreateAccount }) => {
   const [inputs, setInputs] = useState({});
+
+
 
   return (
     <div>
@@ -82,8 +84,7 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
       <ul className="steps">
         <li className="step step-accent">Create Account</li>
         <li className="step">Personal Info</li>
-        <li className="step">Purchase</li>
-        <li className="step">Receive Product</li>
+        <li className="step">Login</li>
       </ul>
     </div>
 

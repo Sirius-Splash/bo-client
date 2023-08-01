@@ -22,11 +22,11 @@ import PersonalInfo from "./PersonalInfo";
 
 const SignUp = () => {
   const [accountDetails, setAccountDetails] = useState({});
-  let step = 2;
+  const [step, setStep] = useState(1)
 
   const handleCreateAccount = (e) => {
     e.preventDefault();
-    console.log(e.target.name);
+    // console.log(e.target.name);
 
   };
 
