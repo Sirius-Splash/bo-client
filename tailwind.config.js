@@ -5,6 +5,7 @@ module.exports = {
       colors: {
         primary: "#FCFCFB",
         secondary: "#030303",
+        tertiary: "#7F7B82",
         accent: "#CA0000",
         neutral: "#3F4242",
       },
@@ -16,6 +17,7 @@ module.exports = {
         gymbuddy: {
           primary: "#FCFCFB",
           secondary: "#030303",
+          tertiary: "#7F7B82",
           accent: "#CA0000",
           neutral: "#3F4242",
         }
