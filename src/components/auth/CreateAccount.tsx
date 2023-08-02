@@ -1,4 +1,3 @@
-import '../../App.css';
 import { useState } from "react";
 import  { FC, Dispatch, SetStateAction } from "react";
 
@@ -9,14 +8,25 @@ import  { FC, Dispatch, SetStateAction } from "react";
 //   // handleCreateAccount: Dispatch<SetStateAction<>>
 // }
 
-const CreateAccount:FC = ({ handleCreateAccount }) => {
+const CreateAccount = ({ handleCreateAccount }) => {
   const [inputs, setInputs] = useState({});
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setInputs(values => ({...values, [name]: value}));
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleCreateAccount(inputs);
+  }
 
   return (
     <div>
 
     <div>
-      <form onSubmit={handleCreateAccount}>
+      <form onSubmit={handleSubmit}>
 
         <div>
           <label className="label">
@@ -28,10 +38,15 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
             <input
               type="text"
               name="username"
+              value={inputs.username || ''}
               placeholder="ex: Buffboi420"
               className="input bg-secondary input-bordered w-full max-w-xs"
+              onChange={handleChange}
             />
         </div>
+
+
+
 
         <div>
           <label className="label">
@@ -43,12 +58,38 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
             <input
               type="text"
               name="password"
+              value={inputs.password || ''}
               placeholder="Enter password here"
               className="input bg-secondary input-bordered w-full max-w-xs"
+              onChange={handleChange}
             />
         </div>
 
-        <input type="submit"/>
+
+
+        <div>
+          <label className="label">
+            <span className="label-text text-primary">Enter your email address: </span>
+          </label>
+        </div>
+
+        <div>
+            <input
+              type="text"
+              name="email"
+              value={inputs.email || ''}
+              placeholder="ex: buffboi420@gmail.com"
+              className="input bg-secondary input-bordered w-full max-w-xs"
+              onChange={handleChange}
+            />
+        </div>
+        
+
+
+
+        <div style={{marginTop: 40, marginBottom: 40}}>
+          <input type="submit" className="btn"/>
+        </div>
 
       </form>
     </div>
@@ -57,8 +98,7 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
       <ul className="steps">
         <li className="step step-accent">Create Account</li>
         <li className="step">Personal Info</li>
-        <li className="step">Purchase</li>
-        <li className="step">Receive Product</li>
+        <li className="step">Login</li>
       </ul>
     </div>
 
@@ -67,72 +107,3 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
 }
 
 export default CreateAccount;
-
-// import { useState } from "react";
-// import  { Dispatch, SetStateAction } from "react";
-
-
-// interface IInputs {
-//   username: string;
-  // password: string;
-  // handleCreateAccount: Dispatch<SetStateAction<>>
-// }
-
-// const CreateAccount = () => {
-//   // const [inputs, setInputs] = useState({});
-
-//   return (
-//     <div>
-
-//     <div>
-//       <form>
-
-//         <div>
-//           <label className="label">
-//             <span className="label-text">Enter a username: </span>
-//           </label>
-//         </div>
-
-//         <div>
-//             <input
-//               type="text"
-//               name="username"
-//               placeholder="ex: Buffboi420"
-//               className="input input-bordered w-full max-w-xs"
-//             />
-//         </div>
-
-//         <div>
-//           <label className="label">
-//             <span className="label-text">Create a password: </span>
-//           </label>
-//         </div>
-
-//         <div>
-//             <input
-//               type="text"
-//               name="password"
-//               placeholder="Enter password here"
-//               className="input input-bordered w-full max-w-xs"
-//             />
-//         </div>
-
-//         <input type="submit"/>
-
-//       </form>
-//     </div>
-
-//     <div>
-//       <ul className="steps">
-//         <li className="step step-primary">Create Account</li>
-//         <li className="step">Personal Info</li>
-//         <li className="step">Purchase</li>
-//         <li className="step">Receive Product</li>
-//       </ul>
-//     </div>
-
-//     </div>
-//   );
-// }
-
-// export default CreateAccount;
