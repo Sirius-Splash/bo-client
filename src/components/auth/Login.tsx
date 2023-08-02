@@ -7,7 +7,7 @@ export default function Login() {
 
   const handleSignupClick = () => {
     console.log('Clicked');
-    <Route path="/signup" element={<SignUp />}/>
+    document.location.href = '/signup';
   }
 
   const handleChange = (e) => {
