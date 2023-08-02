@@ -25,7 +25,8 @@ function PostForm () {
     window.new_post_modal.showModal()
   }
 
-  function handleClose() {
+  function handleClose(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
     window.new_post_modal.close()
   }
 
