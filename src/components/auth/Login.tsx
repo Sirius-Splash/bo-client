@@ -68,7 +68,7 @@ export default function Login() {
           <div style={{marginTop: 10}}>
             <span className="label-text text-primary">Need and account? </span>
             <span
-              className="label-text text-primary"
+              className="label-text text-accent bg-neutral"
               onClick={handleSignupClick}
             >
               Sign Up
@@ -86,7 +86,7 @@ export default function Login() {
 
 
         <div style={{marginTop: 40, marginBottom: 40}}>
-          <input type="submit" className="btn" value='Login'/>
+          <input type="submit" className="btn bg-neutral" value='Login'/>
         </div>
 
       </form>
