@@ -5,12 +5,7 @@ function Social() {
   return (
   <div>
     <PostForm />
-<<<<<<< HEAD
-    <Feed/>
-  </>);
-=======
   </div>);
->>>>>>> 72ae357 (wip)
 }
 
 export default Social;
