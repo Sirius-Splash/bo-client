@@ -4,7 +4,7 @@ import DirectMessageSender from "./DMSender";
 
 const Chat = (currentUserId, otherUserId) => {
   return (
-    <>
+    <div className="flex-row">
       <DirectMessageList
         currentUserId={currentUserId}
         otherUserId={otherUserId}
@@ -13,7 +13,7 @@ const Chat = (currentUserId, otherUserId) => {
         currentUserId={currentUserId}
         otherUserId={otherUserId}
       />
-    </>
+    </div>
   );
 };
 

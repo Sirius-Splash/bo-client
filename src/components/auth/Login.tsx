@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from 'axios'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./SignUp";
 
@@ -6,7 +7,6 @@ export default function Login() {
   const [inputs, setInputs] = useState({});
 
   const handleSignupClick = () => {
-    console.log('Clicked');
     document.location.href = '/signup';
   }
 
@@ -19,6 +19,17 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
+    axios.get('http://localhost:8080/user/', {
+      auth: {
+        username: inputs.username,
+        password: inputs.password,
+      }
+    })
+    .then((res) => {console.log('SUCCESS')})
+    .catch((err) => {
+      console.error(err)
+      //alert
+    });
   }
 
   return (
@@ -68,7 +79,8 @@ export default function Login() {
           <div style={{marginTop: 10}}>
             <span className="label-text text-primary">Need and account? </span>
             <span
-              className="label-text text-primary"
+              style={{borderRadius: '15%', padding: 2, cursor: 'pointer'}}
+              className="label-text text-accent bg-neutral"
               onClick={handleSignupClick}
             >
               Sign Up
@@ -86,7 +98,7 @@ export default function Login() {
 
 
         <div style={{marginTop: 40, marginBottom: 40}}>
-          <input type="submit" className="btn" value='Login'/>
+          <input type="submit" className="btn bg-neutral" value='Login'/>
         </div>
 
       </form>

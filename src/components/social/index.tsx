@@ -1,11 +1,9 @@
-import PostForm from "./PostForm.tsx";
-import DMs from "../chat/index.tsx";
+import Feed from "./feed";
 
 function Social() {
   return (
-    <div className="flex">
-      <PostForm />
-      <DMs />
+    <div>
+      <Feed />
     </div>
   );
 }
