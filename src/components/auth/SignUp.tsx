@@ -24,6 +24,7 @@ const SignUp = () => {
   };
 
   const postSignup = (accountDetails, personalDetails) => {
+    console.log('Submitted')
     const completedDetails = {
       ...accountDetails,
       ...personalDetails
