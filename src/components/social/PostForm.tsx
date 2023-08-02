@@ -26,7 +26,7 @@ function PostForm () {
   }
 
   return (
-    <div className='modal modal-open'>
+    <div>
       <button className='btn' onClick={openModal}>New Post</button>
       <dialog id='new_post_modal' className='modal-box' >
         <h3>New Post</h3>

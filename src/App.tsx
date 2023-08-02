@@ -11,8 +11,8 @@ import DMs from "./components/chat";
 
 function App() {
   return (
-    <div>
-      <div className='static w-full navbar bg-base-200'>
+    <div className='absolute top-0 w-full p-0'>
+      <div className='w-full navbar bg-base-200 p-0'>
         <a className="btn btn-ghost normal-case text-xl">Navbar</a>
       </div>
       <BrowserRouter>
