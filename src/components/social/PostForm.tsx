@@ -49,7 +49,7 @@ function PostForm () {
   }
 
   return (
-    <div>
+    <>
       <button className='btn' onClick={openModal}>New Post</button>
       <dialog id='new_post_modal' className='modal-box' >
         <h3>New Post</h3>
@@ -74,8 +74,7 @@ function PostForm () {
           <button onClick={handleClose}>Close</button>
 
         </form>
-      </div>
-    </dialog>
+      </dialog>
     </>
   )
 }
