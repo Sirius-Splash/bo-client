@@ -68,7 +68,6 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
 
 
 
-
   return (
     <div>
 
@@ -203,7 +202,6 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
               onChange={handleChange}
             />
         </div>
-
 
 
 
