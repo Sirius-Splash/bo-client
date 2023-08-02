@@ -21,7 +21,8 @@ const TrackerModal = ({addWorkout}) => {
 
   const [exerciseList, setExerciseList] = useState<exercisePlus[]>([])
 
-  const addExercise = () => {
+  const addExercise = (e) => {
+    e.preventDefault()
     const arr = []
     exerciseList.forEach((val) => arr.push(val));
     if (currExercise) {
@@ -37,15 +38,13 @@ const TrackerModal = ({addWorkout}) => {
 
   return (
     <>
-    <button className="btn" onClick={showModal}>Open Modal</button>
-      <dialog ref={modalRef} className="modal">
-        <div className = "flex flex-row">
-          <div>
-            {exerciseList.map((val)=>{
-              return <li>{val.exercise.name} : {val.set} x {val.rep}</li>
-            })}
-          </div>
-          <div className = "flex-col">
+    {/* You can open the modal using ID.showModal() method */}
+<button className="btn" onClick={()=>window.my_modal_3.showModal()}>Add Workout</button>
+<dialog id="my_modal_3" className="modal">
+  <form method="dialog" className="modal-box">
+    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    <div className = "flex flex-row">
+          <div className = "flex-col w-2/5">
             <div>
               <Search setter = {setCurrExercise}></Search>
             </div>
@@ -57,19 +56,21 @@ const TrackerModal = ({addWorkout}) => {
             </div>
             <div className = "flex flex-row">
             <div>
-              <button onClick = {addExercise} >Add Exercise</button>
             </div>
+              <button onClick = {addExercise} className = "m-2">Add Exercise</button>
             </div>
+          </div>
+          <div className = "text-left pl-4 overflow-auto h-[200px] w-3/5">
+            {exerciseList.map((val)=>{
+              return <div>{val.exercise.name} : {val.set} x {val.rep}</div>
+            })}
           </div>
         </div>
-        <form method="dialog" className="modal-box">
-          <div className="modal-action">
-            {/* if there is a button in form, it will close the modal */}
-              <button onClick = {()=>{addWorkout(exerciseList); setExerciseList([])}} disabled = {(exerciseList.length === 0)}>Confirm Workout</button>
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick = {()=>{setExerciseList([])}}>✕</button>
-          </div>
-        </form>
-      </dialog>
+        <button onClick = {()=>{addWorkout(exerciseList);
+          setExerciseList([]);
+          window.my_modal_3.close()}} disabled = {(exerciseList.length === 0)}>Confirm Workout</button>
+  </form>
+</dialog>
     </>
   )
 }

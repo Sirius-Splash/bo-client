@@ -1,9 +1,10 @@
 import Feed from "./feed";
 
 function Social() {
-  return (<>
-    <Feed/>
-  </>);
+  return (
+  <div>
+    <Feed />
+  </div>);
 }
 
 export default Social;
