@@ -22,14 +22,23 @@ import PersonalInfo from "./PersonalInfo";
 
 const SignUp = () => {
   const [accountDetails, setAccountDetails] = useState({});
+  const [personalDetails, setPersonalDetails] = useState({});
   const [step, setStep] = useState(1)
 
-  const handleCreateAccount = (e) => {
-    e.preventDefault();
-    // console.log(e.target.name);
-
+  const handleCreateAccount = (inputs) => {
+    console.log(inputs);
+    setAccountDetails(values => ({...values, username: inputs.username, password: inputs.password, email: inputs.email}));
+    setStep(step + 1);
   };
 
+  const handlePersonalInfo = (inputs) => {
+    console.log(inputs);
+
+    setStep(step + 1);
+  };
+
+
+  console.log('ACC DEETS: ', accountDetails);
   return (
     <div>
       {
