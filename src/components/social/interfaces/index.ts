@@ -4,12 +4,12 @@ interface User {
 }
 
 export interface postInterface {
-  id: int,
+  id: number,
   title: string,
   body: string,
   created_at: string,
   updated_at: string,
-  user_id: int,
-  photos: Array,
+  user_id: number,
+  photos: [],
   user: User
 }

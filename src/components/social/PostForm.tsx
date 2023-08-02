@@ -74,8 +74,9 @@ function PostForm () {
           <button onClick={handleClose}>Close</button>
 
         </form>
-      </dialog>
-    </div>
+      </div>
+    </dialog>
+    </>
   )
 }
 
