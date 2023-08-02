@@ -68,6 +68,7 @@ export default function Login() {
           <div style={{marginTop: 10}}>
             <span className="label-text text-primary">Need and account? </span>
             <span
+              style={{borderRadius: '15%', padding: 2, cursor: 'pointer'}}
               className="label-text text-accent bg-neutral"
               onClick={handleSignupClick}
             >
