@@ -27,7 +27,6 @@ const Search:React.FC<SearchProps> = ({setter}) => {
       if (evt.currentTarget.value.length > 0){
         apiCall(searchVal)
         .then((data)=>{
-          console.log('apiCall THEN: ')
           setExList(data.data);
         })
         .catch((err)=>{console.log('apiCall error', err)})
@@ -36,12 +35,8 @@ const Search:React.FC<SearchProps> = ({setter}) => {
       }
     }
   }
-  useEffect(()=>{
-    console.log(exList)
-  },[exList])
 
   function dropdownChange(evt : React.ChangeEvent<HTMLInputElement>) {
-    console.log(evt.currentTarget.value)
     setter(exList[evt.currentTarget.value])
   }
 

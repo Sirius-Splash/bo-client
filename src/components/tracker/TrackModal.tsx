@@ -22,27 +22,18 @@ const TrackerModal = ({addWorkout}) => {
   const [exerciseList, setExerciseList] = useState<exercisePlus[]>([])
 
   const addExercise = () => {
-    console.log('HELLO??')
-    console.log(currExercise)
     const arr = []
     exerciseList.forEach((val) => arr.push(val));
     if (currExercise) {
-      console.log('IN HERE')
     const tempObj = {
       exercise: currExercise,
       set: currSets,
       rep: currReps
       }
-      console.log(tempObj)
       arr.push(tempObj);
-      console.log(arr)
     }
     setExerciseList(arr);
   }
-
-  useEffect(()=>{
-    console.log(exerciseList)
-  }, [])
 
   return (
     <>

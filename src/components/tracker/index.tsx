@@ -11,12 +11,10 @@ const Tracker:React.FC<TrackerProps> = ({number}) => {
   const [tracked, setTracked] = useState([]);
 
   const addWorkout = (input) => {
-    console.log('ADD WORK OUT CALLED: ', input)
     if (input.length > 0) {
       let arr = []
       tracked.forEach((val) => arr.push(val));
       const d = new Date();
-      console.log('DDDDD DATE IS : ', d)
       arr.push({
         workout: input,
         date: d
@@ -25,11 +23,6 @@ const Tracker:React.FC<TrackerProps> = ({number}) => {
       setTracked(arr)
     }
   }
-  useEffect(()=>{
-    console.log('tracked: ')
-    console.log(tracked)
-    console.log(': tracked')
-  },[tracked])
 
   const listWorkout = (wo) => {
     return wo.map((v)=>{
