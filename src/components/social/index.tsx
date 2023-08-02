@@ -3,7 +3,6 @@ import Feed from "./feed";
 
 function Social() {
   return (<>
-    <PostForm />
     <Feed/>
   </>);
 }

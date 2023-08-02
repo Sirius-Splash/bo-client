@@ -2,6 +2,7 @@ import Post from "./post";
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import { postInterface } from "./interfaces";
+import PostForm from "./PostForm";
 //#7F7B82
 function Feed() {
 
@@ -20,6 +21,7 @@ function Feed() {
           return (<Post key={i} post={post}/>)
         })
       }
+      <PostForm />
     </div>
   </div> );
 }

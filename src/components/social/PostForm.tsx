@@ -26,9 +26,10 @@ function PostForm () {
   }
 
   return (
-    <div className='modal modal-open'>
-      <button className='btn' onClick={openModal}>New Post</button>
-      <dialog id='new_post_modal' className='modal-box' >
+    <>
+    <button className='btn' onClick={openModal}>New Post</button>
+    <dialog id='new_post_modal' className='modal'>
+      <div className='modal-box' >
         <h3>New Post</h3>
         <form method='dialog' onSubmit={handleSubmit} >
           <div className='flex flex-col'>
@@ -47,8 +48,9 @@ function PostForm () {
           <button type='submit' className='btn'>Submit</button>
           <button onClick={handleClose}>Close</button>
         </form>
-      </dialog>
-    </div>
+      </div>
+    </dialog>
+    </>
   )
 }
 
