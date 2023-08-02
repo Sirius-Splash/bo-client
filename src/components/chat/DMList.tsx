@@ -1,7 +1,3 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "../../App.css";
-
 interface Message {
   id: number;
   sender_id: number;
@@ -13,26 +9,8 @@ interface Message {
 // ***----- DIRECT MESSAGE LIST COMPONENT -----***
 const DirectMessageList: React.FC<{
   currentUserId: number;
-  otherUserId: number;
-}> = ({ currentUserId, otherUserId }) => {
-  // state for holding message list
-  const [messages, setMessages] = useState<Message[]>([]);
-
-  // any time either the userId or the otherUserId changes, the list of messages should be reloaded
-  // REPLACE ENDPOINT W SOMETHING LIKE: `/DirectMessage?currentUserId1=${currentUserId}&otherUserId2=${otherUserId}`
-  useEffect(() => {
-    axios
-      .get(
-        `/DirectMessage?currentUserId1=${currentUserId}&otherUserId2=${otherUserId}`
-      )
-      .then((res) => {
-        setMessages(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [currentUserId, otherUserId]);
-
+  messages: string[];
+}> = ({ currentUserId, messages }) => {
   return (
     <div className="chat bg-base-100 text-secondary flex flex-col gap-1 mb-2 border-2 border-secondary h-96">
       {messages.map((msg) => (

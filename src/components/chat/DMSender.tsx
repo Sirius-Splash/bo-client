@@ -14,7 +14,8 @@ interface Message {
 const DirectMessageSender: React.FC<{
   currentUserId: number;
   otherUserId: number;
-}> = ({ currentUserId, otherUserId }) => {
+  setMessages: (messages: string[]) => void;
+}> = ({ currentUserId, otherUserId, setMessages }) => {
   const [messageContent, setMessageContent] = useState("");
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -28,6 +29,16 @@ const DirectMessageSender: React.FC<{
       })
       .then((res) => {
         setMessageContent("");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    axios
+      .get(
+        `/DirectMessage?currentUserId1=${currentUserId}&otherUserId2=${otherUserId}`
+      )
+      .then((res) => {
+        setMessages(res.data);
       })
       .catch((err) => {
         console.error(err);
