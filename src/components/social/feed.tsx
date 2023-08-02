@@ -16,11 +16,13 @@ function Feed() {
 
   return ( <div style={{width:"80vw"}}>
     <div className="card w-1/1 bg-primary p-4 overflow-scroll" style={{minHeight:"200px", maxHeight:"90vh"}}>
-      {
-        posts.map((post, i) => {
-          return (<Post key={i} post={post}/>)
-        })
-      }
+      <div className="h-full overflow-y-scroll">
+        {
+          posts.map((post, i) => {
+            return (<Post key={i} post={post}/>)
+          })
+        }
+      </div>
       <PostForm />
     </div>
   </div> );
