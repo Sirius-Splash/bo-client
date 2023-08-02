@@ -1,5 +1,4 @@
 import axios from 'axios';
-require('dotenv').config()
 
 const postGpt = async (chatId: number, userId: number, message: string) => {
   try {
@@ -8,7 +7,7 @@ const postGpt = async (chatId: number, userId: number, message: string) => {
       message: message,
     };
 
-    const response = await axios.post(`${process.env.BACKEND}gpt/${chatId}`, requestData);
+    const response = await axios.post(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/gpt/${chatId}`, requestData);
 
     const responseData = response.data;
     return responseData
@@ -20,7 +19,7 @@ const postGpt = async (chatId: number, userId: number, message: string) => {
 
 const fetchGpt = async (chatId: number) => {
   try {
-    const response = await axios.get(`${process.env.BACKEND}:${process.env.PORT}/gpt/${chatId}`);
+    const response = await axios.get(`http://${import.meta.process.env.BACKEND}:${import.meta.env.PORT}/gpt/${chatId}`);
     const chatHistoryData = response.data;
     return chatHistoryData;
 
