@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Workouts from './subcomponents/Workouts.js';
+import Workouts from './subcomponents/Workouts.jsx';
 // import Schedule from './subcomponents/Schedule.js';
 
 const Planner = () => {
@@ -11,7 +11,7 @@ const Planner = () => {
   const getExercises = () => {
     axios.get(`https://api.api-ninjas.com/v1/exercises?type=${workoutType}`, {
       headers: {
-        'X-Api-Key': ''
+        'X-Api-Key': ""
       }
     })
     .then(response => {
@@ -20,31 +20,27 @@ const Planner = () => {
     .catch(err => console.log(err));
   };
 
-  console.log('Exercises are here: ',exercises);
-
   return (
     <React.Fragment>
-      <button onClick={getExercises}>asdf</button>
-      <div>
-          <details className="dropdown mb-32">
-            <summary className="m-1 btn">Select Workout Type</summary>
-            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-              <li>Cardio</li>
-              <li>Olympic Weightlifting</li>
-              <li>Plyometrics</li>
-              <li>Powerlifting</li>
-              <li>Strength</li>
-              <li>Stretching</li>
-              <li>Strongman</li>
-            </ul>
-          </details>
-          <div>
+      <button onClick={getExercises}>Temp get exercises button</button>
+      <div className="py-5">
+          <select className="select select-bordered w-full max-w-xs" value={"SELECT WORKOUT TYPE"}>
+            <option disabled>SELECT WORKOUT TYPE</option>
+            <option>CARDIO</option>
+            <option>OLYMPIC WEIGHTLIFTING</option>
+            <option>PLYOMETRICS</option>
+            <option>POWERLIFTING</option>
+            <option>STRENGTH</option>
+            <option>STRETCHING</option>
+            <option>STRONGMAN</option>
+          </select>
+          <div className="flex items-center py-5">
             <Workouts exercises={exercises}/>
           </div>
           {/* <div>
             <Schedule workouts={workouts}/>
           </div> */}
-        </div>
+      </div>
     </React.Fragment>
   )
 };
