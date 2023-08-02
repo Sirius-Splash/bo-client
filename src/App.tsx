@@ -1,6 +1,6 @@
 import './App.css';
 import Auth from './components/auth/index';
-import Login from './components/auth/index'
+import Login from './components/auth/Login.tsx'
 import Social from './components/social/index';
 import Notfound from './components/notfound';
 import Planner from './components/planner/Planner.jsx'
