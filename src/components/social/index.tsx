@@ -4,6 +4,7 @@ import Feed from "./feed";
 function Social() {
   return (
   <div>
+    <Feed />
     <PostForm />
   </div>);
 }
