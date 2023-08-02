@@ -24,6 +24,7 @@ const Search:React.FC<SearchProps> = ({setter}) => {
 
   function enterHit (evt : React.KeyboardEvent<HTMLInputElement>) {
     if (evt.key === 'Enter') {
+      evt.preventDefault()
       if (evt.currentTarget.value.length > 0){
         apiCall(searchVal)
         .then((data)=>{
@@ -55,18 +56,19 @@ const Search:React.FC<SearchProps> = ({setter}) => {
     )
   }
   return (
-    <>
+    <div className = "m-auto">
     <input type = "search"
     placeholder = "Search Exercise Name"
     onChange={inputChange}
     onKeyDown={enterHit}
+    className = "w-full mb-2"
     >
     </input>
     <br></br>
-    <select onChange={dropdownChange}>
+    <select onChange={dropdownChange} className = "w-full mb-2">
       {renderDropdown()}
     </select>
-    </>
+    </div>
   )
 }
 
