@@ -48,8 +48,22 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs);
-    // handlePersonalInfo
+
+    const height = (Number(inputs.heightInFeet) * 12) + Number(inputs.heightInInches);
+
+    const resultingInfo = {
+      name: inputs.name,
+      age: Number(inputs.age),
+      sex: inputs.sex,
+      height: height,
+      weight: Number(inputs.weight),
+      experience: Number(inputs.experience),
+      goals: inputs.goals,
+      equipment: inputs.equipment,
+      trainer: inputs.trainer
+    }
+
+    handlePersonalInfo(resultingInfo)
   }
 
 
@@ -212,7 +226,7 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
             onChange={handleChange}
           />
           <div className="w-full flex justify-between text-xs px-2">
-            <span>Smallboi</span>
+            <span>Scrub</span>
             <span>Bro</span>
             <span>Gym Bro</span>
           </div>

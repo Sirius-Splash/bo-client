@@ -1,7 +1,9 @@
 import { useState } from "react";
 // import  { Dispatch, SetStateAction } from "react";
+import axios from 'axios';
 import CreateAccount from "./CreateAccount";
 import PersonalInfo from "./PersonalInfo";
+import Login from "./Login";
 
 // type IAccountDetails = {
 //   username: string;
@@ -26,19 +28,32 @@ const SignUp = () => {
   const [step, setStep] = useState(1)
 
   const handleCreateAccount = (inputs) => {
-    console.log(inputs);
-    setAccountDetails(values => ({...values, username: inputs.username, password: inputs.password, email: inputs.email}));
+    // setAccountDetails(values => ({...values, username: inputs.username, password: inputs.password, email: inputs.email}));
+    setAccountDetails(inputs);
     setStep(step + 1);
   };
 
   const handlePersonalInfo = (inputs) => {
-    console.log(inputs);
+    setPersonalDetails(inputs)
+    postSignup(accountDetails, inputs);
+    // setStep(step + 1);
+  };
 
-    setStep(step + 1);
+  const postSignup = (accountDetails, personalDetails) => {
+    const completedDetails = {
+      ...accountDetails,
+      ...personalDetails
+    };
+
+    axios.post('http://localhost:8080/signup', completedDetails)
+    .then(() => setStep(step + 1))
+    .catch((err) => {
+      console.error(err);
+      alert('Whoops! Something went wrong. Try again in a few moments.')
+    });
   };
 
 
-  console.log('ACC DEETS: ', accountDetails);
   return (
     <div>
       {
@@ -50,7 +65,7 @@ const SignUp = () => {
           <PersonalInfo
             handlePersonalInfo={handlePersonalInfo}
           />
-        : 'Hmmm'
+        : <Login/>
       }
     </div>
   );
