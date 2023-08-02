@@ -1,6 +1,5 @@
-import '../../App.css';
 import { useState } from "react";
-import  { Dispatch, SetStateAction } from "react";
+// import  { Dispatch, SetStateAction } from "react";
 import CreateAccount from "./CreateAccount";
 import PersonalInfo from "./PersonalInfo";
 
@@ -21,9 +20,9 @@ import PersonalInfo from "./PersonalInfo";
 //   online_status: boolean;
 // }
 
-const SignUp:React.FC = () => {
-  const [accountDetails, setAccountDetails] = useState<any>({});
-  let step = 1;
+const SignUp = () => {
+  const [accountDetails, setAccountDetails] = useState({});
+  let step = 2;
 
   const handleCreateAccount = (e) => {
     e.preventDefault();
