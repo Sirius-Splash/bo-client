@@ -8,6 +8,7 @@ import  { FC, Dispatch, SetStateAction } from "react";
 //   // handleCreateAccount: Dispatch<SetStateAction<>>
 // }
 
+
 const PersonalInfo = () => {
   const [inputs, setInputs] = useState({});
 
@@ -186,6 +187,7 @@ const PersonalInfo = () => {
 
 
 
+
         <div className="form-control w-full max-w-xs">
           <label className="label">
             <span className="label-text text-primary">What is your primary goal at the gym?</span>
@@ -230,6 +232,7 @@ const PersonalInfo = () => {
       <ul className="steps">
         <li className="step step-accent">Create Account</li>
         <li className="step step-accent">Personal Info</li>
+
         <li className="step">Login</li>
         {/* <li className="step">Review</li>  STRETCH GOAL*/}
       </ul>

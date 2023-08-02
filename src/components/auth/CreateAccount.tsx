@@ -33,9 +33,6 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
             />
         </div>
 
-
-
-
         <div>
           <label className="label">
             <span className="label-text text-primary">Create a password: </span>
@@ -53,7 +50,6 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
         </div>
 
 
-
         <div>
           <label className="label">
             <span className="label-text text-primary">Enter your email address: </span>
@@ -69,9 +65,6 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
               className="input bg-secondary input-bordered w-full max-w-xs"
             />
         </div>
-
-
-
 
         <input type="submit"/>
 
