@@ -34,7 +34,7 @@ const DirectMessageList: React.FC<{
   }, [currentUserId, otherUserId]);
 
   return (
-    <div className="chat bg-base-100 text-secondary flex flex-col gap-1 my-2">
+    <div className="chat bg-base-100 text-secondary flex flex-col gap-1 mb-2 border-2 border-secondary h-96">
       {messages.map((msg) => (
         <div
           key={msg.id}

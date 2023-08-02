@@ -4,6 +4,7 @@ import Social from "./components/social/index";
 import Notfound from "./components/notfound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import DMs from "./components/chat";
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
         <Route
           path="social"
           element={<Social />}
+        />
+        <Route
+          path="chat"
+          element={<DMs />}
         />
 
         {/* New Routes Go ABOVE this line */}
