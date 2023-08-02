@@ -1,9 +1,9 @@
 import Feed from "./feed";
 
 function Social() {
-  return (<>
+  return (<div>
     <Feed/>
-  </>);
+  </div>);
 }
 
 export default Social;
