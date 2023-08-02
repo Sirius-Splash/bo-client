@@ -15,8 +15,8 @@ const Exercise = ({ exercise }) => {
             <div className="pr-4 w-1/3 text-center">BODYWEIGHT</div> :
             <div className="pr-4 w-1/3 text-center">{exercise.equipment.toUpperCase()}</div>
         }
-        <div className="pr-4 w-1/4 text-center"> SETS: 3</div>
-        <div className="pr-2 w-1/4 text-center">REPS: 10-15</div>
+        <div className="pr-4 w-1/4 text-center">3</div>
+        <div className="pr-2 w-1/4 text-center">10-15</div>
       </div>
       <dialog ref={modalRef} className="modal">
         <form method="dialog" className="modal-box">
