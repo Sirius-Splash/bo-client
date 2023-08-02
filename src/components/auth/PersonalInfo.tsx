@@ -12,13 +12,23 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
   const [inputs, setInputs] = useState({
     experience: '1',
     equipment: true,
-    trainer: false
+    trainer: false,
+    age: '18',
+    weight: '150',
+    sex: 'male',
   });
 
   const [equipmentChecked, setEquipmentChecked] = useState(true);
   const [trainerChecked, setTrainerChecked] = useState(false);
+  const [sexChecked, setSexChecked] = useState('male');
 
 
+
+  const HandleSexChecked = () => {
+    const newSex = sexChecked === 'male' ? 'female' : 'male';
+    setSexChecked(newSex);
+    setInputs(values => ({...values, sex: newSex}));
+  }
 
   const handleTrainerChecked = () => {
     setTrainerChecked(!trainerChecked);
@@ -104,8 +114,10 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
             <input
               type="radio"
               name="sex"
+              value='male'
               className="radio checked:bg-accent"
-              checked
+              checked={sexChecked === 'male'}
+              onChange={HandleSexChecked}
             />
           </label>
         </div>
@@ -116,7 +128,10 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
             <input
               type="radio"
               name="sex"
+              value="female"
               className="radio checked:bg-accent"
+              checked={sexChecked === 'female'}
+              onChange={HandleSexChecked}
             />
           </label>
         </div>
@@ -136,7 +151,7 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
               name="heightInFeet"
               min={4}
               max={7}
-              value={inputs.heightInFeet}
+              value={inputs.heightInFeet || ''}
               placeholder="Ft."
               className="input bg-secondary input-bordered w-20 max-w-xs"
               onChange={handleChange}
@@ -147,7 +162,7 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
               name="heightInInches"
               min={0}
               max={11}
-              value={inputs.heightInInches}
+              value={inputs.heightInInches || ''}
               placeholder="In."
               className="input bg-secondary input-bordered w-20 max-w-xs"
               onChange={handleChange}
@@ -169,7 +184,7 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
               name="weight"
               min={70}
               max={500}
-              value={inputs.weight || 150}
+              value={inputs.weight || '150'}
               className="input bg-secondary input-bordered w-20 max-w-xs"
               onChange={handleChange}
             />
