@@ -24,12 +24,13 @@ const SignUp = () => {
   };
 
   const postSignup = (accountDetails, personalDetails) => {
+    console.log('Submitted')
     const completedDetails = {
       ...accountDetails,
       ...personalDetails
     };
 
-    axios.post('http://localhost:8080/signup', completedDetails)
+    axios.post('http://localhost:8080/user', completedDetails)
     .then(() => setStep(step + 1))
     .catch((err) => {
       console.error(err);
