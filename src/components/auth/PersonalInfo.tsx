@@ -8,14 +8,48 @@ import  { FC, Dispatch, SetStateAction } from "react";
 //   // handleCreateAccount: Dispatch<SetStateAction<>>
 // }
 
-const PersonalInfo = () => {
-  const [inputs, setInputs] = useState({});
+const PersonalInfo = ({ handlePersonalInfo }) => {
+  const [inputs, setInputs] = useState({
+    experience: '1',
+    equipment: true,
+    trainer: false
+  });
+
+  const [equipmentChecked, setEquipmentChecked] = useState(true);
+  const [trainerChecked, setTrainerChecked] = useState(false);
+
+
+
+  const handleTrainerChecked = () => {
+    setTrainerChecked(!trainerChecked);
+    setInputs(values => ({...values, trainer: !trainerChecked}));
+  }
+
+  const handleEquipmentChecked = () => {
+    setEquipmentChecked(!equipmentChecked);
+    setInputs(values => ({...values, equipment: !equipmentChecked}));
+  }
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setInputs(values => ({...values, [name]: value}));
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputs);
+    // handlePersonalInfo
+  }
+
+
+
 
   return (
     <div>
 
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
 
         <div>
           <label className="label">
@@ -30,6 +64,7 @@ const PersonalInfo = () => {
               value={inputs.name || ''}
               placeholder="ex: Buffboi"
               className="input bg-secondary input-bordered w-full max-w-xs"
+              onChange={handleChange}
             />
         </div>
 
@@ -50,6 +85,7 @@ const PersonalInfo = () => {
               max={120}
               value={inputs.age || 18}
               className="input bg-secondary input-bordered w-20 max-w-xs"
+              onChange={handleChange}
             />
         </div>
 
@@ -103,6 +139,7 @@ const PersonalInfo = () => {
               value={inputs.heightInFeet}
               placeholder="Ft."
               className="input bg-secondary input-bordered w-20 max-w-xs"
+              onChange={handleChange}
             />
 
             <input
@@ -113,6 +150,7 @@ const PersonalInfo = () => {
               value={inputs.heightInInches}
               placeholder="In."
               className="input bg-secondary input-bordered w-20 max-w-xs"
+              onChange={handleChange}
             />
         </div>
 
@@ -133,6 +171,7 @@ const PersonalInfo = () => {
               max={500}
               value={inputs.weight || 150}
               className="input bg-secondary input-bordered w-20 max-w-xs"
+              onChange={handleChange}
             />
         </div>
 
@@ -152,12 +191,13 @@ const PersonalInfo = () => {
             name="experience"
             min={0}
             max={2}
-            // value={1 || inputs.experience}
+            defaultValue={1}
             className="range range-accent"
             step={1}
+            onChange={handleChange}
           />
           <div className="w-full flex justify-between text-xs px-2">
-            <span>Scrub</span>
+            <span>Smallboi</span>
             <span>Bro</span>
             <span>Gym Bro</span>
           </div>
@@ -178,7 +218,9 @@ const PersonalInfo = () => {
             <input
               type="checkbox"
               name="equipment"
+              checked={equipmentChecked}
               className="toggle toggle-accent"
+              onChange={handleEquipmentChecked}
             />
           </label>
         </div>
@@ -190,7 +232,11 @@ const PersonalInfo = () => {
           <label className="label">
             <span className="label-text text-primary">What is your primary goal at the gym?</span>
           </label>
-          <select className="select select-accent" name="goals">
+          <select
+            className="select select-accent"
+            name="goals"
+            onChange={handleChange}
+          >
             <option disabled selected>Pick one</option>
             <option>Lose weight</option>
             <option>Gain muscle mass</option>
@@ -215,6 +261,8 @@ const PersonalInfo = () => {
               type="checkbox"
               name="trainer"
               className="toggle toggle-accent"
+              checked={trainerChecked}
+              onChange={handleTrainerChecked}
             />
           </label>
         </div>

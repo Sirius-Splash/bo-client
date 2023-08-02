@@ -48,7 +48,7 @@ const SignUp = () => {
           />
         : step == 2 ?
           <PersonalInfo
-
+            handlePersonalInfo={handlePersonalInfo}
           />
         : 'Hmmm'
       }
