@@ -12,7 +12,7 @@ const Exercises = ({ exercises, setWorkouts, workoutCount, setWorkoutCount, work
           <div className="pr-2 w-1/4 text-center font-bold">REPS</div>
           {/* <div className="pr-2 w-6 text-center font-bold">ADD WORKOUT</div> */}
         </div>
-      <div>
+      <div className="max-h-96 overflow-y-auto">
         {exercises.map((exercise, i) => {
           return <Exercise key={i} exercise={exercise} setWorkouts={setWorkouts} workouts={workouts} workoutCount={workoutCount} setWorkoutCount={setWorkoutCount}/>
         })}
