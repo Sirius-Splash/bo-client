@@ -1,15 +1,14 @@
 import { useState } from "react";
-import  { FC, Dispatch, SetStateAction } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SignUp from "./SignUp";
 
-
-// interface IInputs {
-//   username: string;
-//   password: string;
-//   // handleCreateAccount: Dispatch<SetStateAction<>>
-// }
-
-const CreateAccount = ({ handleCreateAccount }) => {
+export default function Login() {
   const [inputs, setInputs] = useState({});
+
+  const handleSignupClick = () => {
+    console.log('Clicked');
+    document.location.href = '/signup';
+  }
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -19,18 +18,20 @@ const CreateAccount = ({ handleCreateAccount }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleCreateAccount(inputs);
+    console.log(inputs);
   }
 
   return (
     <div>
+
+    <h2>Login Below</h2>
 
     <div>
       <form onSubmit={handleSubmit}>
 
         <div>
           <label className="label">
-            <span className="label-text text-primary">Enter a username: </span>
+            <span className="label-text text-primary">Username: </span>
           </label>
         </div>
 
@@ -39,7 +40,7 @@ const CreateAccount = ({ handleCreateAccount }) => {
               type="text"
               name="username"
               value={inputs.username || ''}
-              placeholder="ex: Buffboi420"
+              placeholder="Enter username here"
               className="input bg-secondary input-bordered w-full max-w-xs"
               onChange={handleChange}
             />
@@ -50,7 +51,7 @@ const CreateAccount = ({ handleCreateAccount }) => {
 
         <div>
           <label className="label">
-            <span className="label-text text-primary">Create a password: </span>
+            <span className="label-text text-primary">Password: </span>
           </label>
         </div>
 
@@ -64,46 +65,34 @@ const CreateAccount = ({ handleCreateAccount }) => {
               onChange={handleChange}
             />
         </div>
+          <div style={{marginTop: 10}}>
+            <span className="label-text text-primary">Need and account? </span>
+            <span
+              className="label-text text-primary"
+              onClick={handleSignupClick}
+            >
+              Sign Up
+            </span>
+          </div>
 
 
-
-        <div>
-          <label className="label">
-            <span className="label-text text-primary">Enter your email address: </span>
-          </label>
+        <div style={{marginTop: 40}}>
+            <span className="label-text text-primary">
+              Or sign in with Google
+            </span>
         </div>
 
-        <div>
-            <input
-              type="text"
-              name="email"
-              value={inputs.email || ''}
-              placeholder="ex: buffboi420@gmail.com"
-              className="input bg-secondary input-bordered w-full max-w-xs"
-              onChange={handleChange}
-            />
-        </div>
-        
 
 
 
         <div style={{marginTop: 40, marginBottom: 40}}>
-          <input type="submit" className="btn"/>
+          <input type="submit" className="btn" value='Login'/>
         </div>
 
       </form>
     </div>
 
-    <div>
-      <ul className="steps">
-        <li className="step step-accent">Create Account</li>
-        <li className="step">Personal Info</li>
-        <li className="step">Login</li>
-      </ul>
-    </div>
 
     </div>
-  );
+  )
 }
-
-export default CreateAccount;

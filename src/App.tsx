@@ -1,7 +1,9 @@
 import "./App.css";
 import Auth from "./components/auth/index";
+import Login from "./components/auth/Login.tsx";
 import Social from "./components/social/index";
 import Notfound from "./components/notfound";
+import Planner from "./components/planner/Planner.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import DMs from "./components/chat";
@@ -12,6 +14,10 @@ function App() {
       <Routes>
         <Route
           path="/"
+          element={<Login />}
+        />
+        <Route
+          path="/signup"
           element={<Auth />}
         />
         <Route
@@ -19,8 +25,8 @@ function App() {
           element={<Social />}
         />
         <Route
-          path="chat"
-          element={<DMs />}
+          path="planner"
+          element={<Planner />}
         />
 
         {/* New Routes Go ABOVE this line */}
