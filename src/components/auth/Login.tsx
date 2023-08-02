@@ -1,7 +1,14 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SignUp from "./SignUp";
 
 export default function Login() {
   const [inputs, setInputs] = useState({});
+
+  const handleSignupClick = () => {
+    console.log('Clicked');
+    <Route path="/signup" element={<SignUp />}/>
+  }
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -58,11 +65,21 @@ export default function Login() {
               onChange={handleChange}
             />
         </div>
-
+          <div style={{marginTop: 10}}>
+            <span className="label-text text-primary">Need and account? </span>
+            <span
+              className="label-text text-primary"
+              onClick={handleSignupClick}
+            >
+              Sign Up
+            </span>
+          </div>
 
 
         <div style={{marginTop: 40}}>
-            <span className="label-text text-primary">Or sign in with Google </span>
+            <span className="label-text text-primary">
+              Or sign in with Google
+            </span>
         </div>
 
 
