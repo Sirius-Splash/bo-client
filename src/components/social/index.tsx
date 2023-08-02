@@ -1,9 +1,11 @@
+import PostForm from './PostForm.tsx'
 import Feed from "./feed";
 
 function Social() {
-  return (<div>
+  return (<>
+    <PostForm />
     <Feed/>
-  </div>);
+  </>);
 }
 
 export default Social;

@@ -1,35 +1,43 @@
-import '../../App.css';
 import { useState } from "react";
-import  { Dispatch, SetStateAction } from "react";
+// import  { Dispatch, SetStateAction } from "react";
+import axios from 'axios';
 import CreateAccount from "./CreateAccount";
 import PersonalInfo from "./PersonalInfo";
+import Login from "./Login";
 
-// type IAccountDetails = {
-//   username: string;
-//   password: string;
-//   name: string;
-//   email: string;
-//   age: number;
-//   sex: string;
-//   height: number;
-//   weight: number;
-//   experience: number;
-//   goals: string;
-//   equipment: boolean;
-//   trainer: boolean;
-//   profile_pic: string;
-//   online_status: boolean;
-// }
 
-const SignUp:React.FC = () => {
-  const [accountDetails, setAccountDetails] = useState<any>({});
-  let step = 1;
+const SignUp = () => {
+  const [accountDetails, setAccountDetails] = useState({});
+  const [personalDetails, setPersonalDetails] = useState({});
+  const [step, setStep] = useState(1)
 
-  const handleCreateAccount = (e) => {
-    e.preventDefault();
-    console.log(e.target.name);
-
+  const handleCreateAccount = (inputs) => {
+    // setAccountDetails(values => ({...values, username: inputs.username, password: inputs.password, email: inputs.email}));
+    setAccountDetails(inputs);
+    setStep(step + 1);
   };
+
+  const handlePersonalInfo = (inputs) => {
+    setPersonalDetails(inputs)
+    postSignup(accountDetails, inputs);
+    // setStep(step + 1);
+  };
+
+  const postSignup = (accountDetails, personalDetails) => {
+    console.log('Submitted')
+    const completedDetails = {
+      ...accountDetails,
+      ...personalDetails
+    };
+
+    axios.post('http://localhost:8080/user', completedDetails)
+    .then(() => setStep(step + 1))
+    .catch((err) => {
+      console.error(err);
+      alert('Whoops! Something went wrong. Try again in a few moments.')
+    });
+  };
+
 
   return (
     <div>
@@ -40,9 +48,9 @@ const SignUp:React.FC = () => {
           />
         : step == 2 ?
           <PersonalInfo
-
+            handlePersonalInfo={handlePersonalInfo}
           />
-        : 'Hmmm'
+        : <Login/>
       }
     </div>
   );
