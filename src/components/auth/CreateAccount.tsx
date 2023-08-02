@@ -83,12 +83,12 @@ const CreateAccount = ({ handleCreateAccount }) => {
               onChange={handleChange}
             />
         </div>
-        
+
 
 
 
         <div style={{marginTop: 40, marginBottom: 40}}>
-          <input type="submit" className="btn"/>
+          <input type="submit" className="btn bg-neutral"/>
         </div>
 
       </form>

@@ -5,22 +5,6 @@ import CreateAccount from "./CreateAccount";
 import PersonalInfo from "./PersonalInfo";
 import Login from "./Login";
 
-// type IAccountDetails = {
-//   username: string;
-//   password: string;
-//   name: string;
-//   email: string;
-//   age: number;
-//   sex: string;
-//   height: number;
-//   weight: number;
-//   experience: number;
-//   goals: string;
-//   equipment: boolean;
-//   trainer: boolean;
-//   profile_pic: string;
-//   online_status: boolean;
-// }
 
 const SignUp = () => {
   const [accountDetails, setAccountDetails] = useState({});
