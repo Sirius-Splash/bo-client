@@ -26,22 +26,46 @@ const Tracker:React.FC<TrackerProps> = ({number}) => {
 
   const listWorkout = (wo) => {
     return wo.map((v)=>{
-      return <li>{v.exercise.name} : {v.set} x {v.rep}</li>
+      return <div className = "flex flex-col">
+        <div>
+        {v.exercise.name}
+        </div>
+        <div>
+        {v.set} x {v.rep}
+        </div>
+        </div>
     })
+  }
+
+  const renderAccordion = () => {
+    let arr = [];
+    for (let i = tracked.length - 1; i >= 0; i--) {
+      let v = tracked[i]
+      arr.push(
+        <div className="collapse collapse-arrow join-item border border-base-300">
+          <input type="radio" name="my-accordion-4"/>
+          <div className="collapse-title text-xl font-medium">
+          {v.date.getMonth()+1}/{v.date.getDate()}/{v.date.getFullYear()}
+          </div>
+          <div className="collapse-content">
+          {listWorkout(v.workout)}
+          </div>
+        </div>
+      )
+    }
+    return arr;
   }
 
   return (
     <>
-    <div>
-    {tracked.map((v)=>{
-      return (
-        <div>
-          <li>{v.date.toString()}</li>
-          {listWorkout(v.workout)}
-        </div>)
-    })}
-    </div>
+    <div className = "m-4">
     <TrackerModal addWorkout = {addWorkout}></TrackerModal>
+    </div>
+    <div className = "overflow-auto h-[500px]">
+    <div className="join join-vertical w-[500px]">
+      {renderAccordion()}
+    </div>
+    </div>
     </>
   )
 }
