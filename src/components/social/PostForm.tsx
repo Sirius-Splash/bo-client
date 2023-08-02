@@ -32,13 +32,16 @@ function PostForm () {
         <h3>New Post</h3>
         <form method='dialog' onSubmit={handleSubmit} >
           <div className='flex flex-col'>
-            <label>Title</label>
             <input
               type='text'
-              className='input-bordered'
+              className='input input-bordered'
             />
             <textarea
-              className='textarea-bordered'
+              className='textarea textarea-bordered'
+            />
+            <input
+              type='file'
+              className='file-input'
             />
           </div>
           <button type='submit' className='btn'>Submit</button>
