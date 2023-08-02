@@ -1,4 +1,3 @@
-import '../../App.css';
 import { useState } from "react";
 import  { FC, Dispatch, SetStateAction } from "react";
 
@@ -28,6 +27,7 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
             <input
               type="text"
               name="username"
+              value={inputs.username || ''}
               placeholder="ex: Buffboi420"
               className="input bg-secondary input-bordered w-full max-w-xs"
             />
@@ -43,7 +43,25 @@ const CreateAccount:FC = ({ handleCreateAccount }) => {
             <input
               type="text"
               name="password"
+              value={inputs.password || ''}
               placeholder="Enter password here"
+              className="input bg-secondary input-bordered w-full max-w-xs"
+            />
+        </div>
+
+
+        <div>
+          <label className="label">
+            <span className="label-text text-primary">Enter your email address: </span>
+          </label>
+        </div>
+
+        <div>
+            <input
+              type="text"
+              name="email"
+              value={inputs.email || ''}
+              placeholder="ex: buffboi420@gmail.com"
               className="input bg-secondary input-bordered w-full max-w-xs"
             />
         </div>
