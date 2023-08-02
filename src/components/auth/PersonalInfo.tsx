@@ -8,15 +8,71 @@ import  { FC, Dispatch, SetStateAction } from "react";
 //   // handleCreateAccount: Dispatch<SetStateAction<>>
 // }
 
+const PersonalInfo = ({ handlePersonalInfo }) => {
+  const [inputs, setInputs] = useState({
+    experience: '1',
+    equipment: true,
+    trainer: false,
+    age: '18',
+    weight: '150',
+    sex: 'male',
+  });
 
-const PersonalInfo = () => {
-  const [inputs, setInputs] = useState({});
+  const [equipmentChecked, setEquipmentChecked] = useState(true);
+  const [trainerChecked, setTrainerChecked] = useState(false);
+  const [sexChecked, setSexChecked] = useState('male');
+
+
+
+  const HandleSexChecked = () => {
+    const newSex = sexChecked === 'male' ? 'female' : 'male';
+    setSexChecked(newSex);
+    setInputs(values => ({...values, sex: newSex}));
+  }
+
+  const handleTrainerChecked = () => {
+    setTrainerChecked(!trainerChecked);
+    setInputs(values => ({...values, trainer: !trainerChecked}));
+  }
+
+  const handleEquipmentChecked = () => {
+    setEquipmentChecked(!equipmentChecked);
+    setInputs(values => ({...values, equipment: !equipmentChecked}));
+  }
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setInputs(values => ({...values, [name]: value}));
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const height = (Number(inputs.heightInFeet) * 12) + Number(inputs.heightInInches);
+
+    const resultingInfo = {
+      name: inputs.name,
+      age: Number(inputs.age),
+      sex: inputs.sex,
+      height: height,
+      weight: Number(inputs.weight),
+      experience: Number(inputs.experience),
+      goals: inputs.goals,
+      equipment: inputs.equipment,
+      trainer: inputs.trainer
+    }
+
+    handlePersonalInfo(resultingInfo)
+  }
+
+
 
   return (
     <div>
 
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
 
         <div>
           <label className="label">
@@ -31,6 +87,7 @@ const PersonalInfo = () => {
               value={inputs.name || ''}
               placeholder="ex: Buffboi"
               className="input bg-secondary input-bordered w-full max-w-xs"
+              onChange={handleChange}
             />
         </div>
 
@@ -51,6 +108,7 @@ const PersonalInfo = () => {
               max={120}
               value={inputs.age || 18}
               className="input bg-secondary input-bordered w-20 max-w-xs"
+              onChange={handleChange}
             />
         </div>
 
@@ -69,8 +127,10 @@ const PersonalInfo = () => {
             <input
               type="radio"
               name="sex"
+              value='male'
               className="radio checked:bg-accent"
-              checked
+              checked={sexChecked === 'male'}
+              onChange={HandleSexChecked}
             />
           </label>
         </div>
@@ -81,7 +141,10 @@ const PersonalInfo = () => {
             <input
               type="radio"
               name="sex"
+              value="female"
               className="radio checked:bg-accent"
+              checked={sexChecked === 'female'}
+              onChange={HandleSexChecked}
             />
           </label>
         </div>
@@ -101,9 +164,10 @@ const PersonalInfo = () => {
               name="heightInFeet"
               min={4}
               max={7}
-              value={inputs.heightInFeet}
+              value={inputs.heightInFeet || ''}
               placeholder="Ft."
               className="input bg-secondary input-bordered w-20 max-w-xs"
+              onChange={handleChange}
             />
 
             <input
@@ -111,9 +175,10 @@ const PersonalInfo = () => {
               name="heightInInches"
               min={0}
               max={11}
-              value={inputs.heightInInches}
+              value={inputs.heightInInches || ''}
               placeholder="In."
               className="input bg-secondary input-bordered w-20 max-w-xs"
+              onChange={handleChange}
             />
         </div>
 
@@ -132,11 +197,11 @@ const PersonalInfo = () => {
               name="weight"
               min={70}
               max={500}
-              value={inputs.weight || 150}
+              value={inputs.weight || '150'}
               className="input bg-secondary input-bordered w-20 max-w-xs"
+              onChange={handleChange}
             />
         </div>
-
 
 
 
@@ -153,9 +218,10 @@ const PersonalInfo = () => {
             name="experience"
             min={0}
             max={2}
-            // value={1 || inputs.experience}
+            defaultValue={1}
             className="range range-accent"
             step={1}
+            onChange={handleChange}
           />
           <div className="w-full flex justify-between text-xs px-2">
             <span>Scrub</span>
@@ -179,11 +245,12 @@ const PersonalInfo = () => {
             <input
               type="checkbox"
               name="equipment"
+              checked={equipmentChecked}
               className="toggle toggle-accent"
+              onChange={handleEquipmentChecked}
             />
           </label>
         </div>
-
 
 
 
@@ -192,7 +259,11 @@ const PersonalInfo = () => {
           <label className="label">
             <span className="label-text text-primary">What is your primary goal at the gym?</span>
           </label>
-          <select className="select select-accent" name="goals">
+          <select
+            className="select select-accent"
+            name="goals"
+            onChange={handleChange}
+          >
             <option disabled selected>Pick one</option>
             <option>Lose weight</option>
             <option>Gain muscle mass</option>
@@ -217,6 +288,8 @@ const PersonalInfo = () => {
               type="checkbox"
               name="trainer"
               className="toggle toggle-accent"
+              checked={trainerChecked}
+              onChange={handleTrainerChecked}
             />
           </label>
         </div>
@@ -232,7 +305,6 @@ const PersonalInfo = () => {
       <ul className="steps">
         <li className="step step-accent">Create Account</li>
         <li className="step step-accent">Personal Info</li>
-
         <li className="step">Login</li>
         {/* <li className="step">Review</li>  STRETCH GOAL*/}
       </ul>
