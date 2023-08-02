@@ -15,8 +15,7 @@ declare global {
 const session = {
   userID: 0
 }
-const URL = 'database/url'
-
+const URL = import.meta.env.VITE_SERVER_URL + '/posts'
 function PostForm () {
   const [title, setTitle] = React.useState('')
   const [body, setBody] = React.useState('')
@@ -41,6 +40,7 @@ function PostForm () {
     axios.post(URL, post)
     .then(()=>{
       window.new_post_modal.close()
+      document.getElementById('new_post_form').reset()
     })
     .catch((err: Error)=>{
       console.log('Ooops something went wrong')
@@ -53,7 +53,7 @@ function PostForm () {
       <button className='btn' onClick={openModal}>New Post</button>
       <dialog id='new_post_modal' className='modal-box' >
         <h3>New Post</h3>
-        <form method='dialog' onSubmit={handleSubmit} >
+        <form method='dialog' id='new_post_form' onSubmit={handleSubmit} >
           <div className='flex flex-col'>
             <input
               type='text'
