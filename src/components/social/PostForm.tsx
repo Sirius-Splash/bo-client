@@ -35,9 +35,10 @@ function PostForm () {
             <label>Title</label>
             <input
               type='text'
+              className='input-bordered'
             />
             <textarea
-
+              className='textarea-bordered'
             />
           </div>
           <button type='submit' className='btn'>Submit</button>
