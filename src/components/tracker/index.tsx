@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import TrackerModal  from "./TrackModal";
 import Search from "./Search";
+import axios from "axios";
 
 interface TrackerProps {
   number: number
@@ -9,6 +10,22 @@ interface TrackerProps {
 const Tracker:React.FC<TrackerProps> = ({number}) => {
 
   const [tracked, setTracked] = useState([]);
+
+  const getWorkouts = () => {
+    axios.get(import.meta.env.VITE_SERVER_TRACKER_URL)
+      .then((data)=>{
+        console.log('get Workouts then')
+        console.log(data)
+      }).catch((err)=>{console.log('Tracker getWorkouts err: ', err)})
+    }
+    const postWorkout = () => {
+      axios.post(import.meta.env.VITE_SERVER_TRACKER_URL)
+      .then((data)=>{
+        console.log('post workouts then')
+
+        console.log(data)
+      }).catch((err)=>{console.log('Tracker getWorkouts err: ', err)})
+  }
 
   const addWorkout = (input) => {
     if (input.length > 0) {
@@ -21,6 +38,7 @@ const Tracker:React.FC<TrackerProps> = ({number}) => {
       }
       )
       setTracked(arr)
+
     }
   }
 
@@ -56,11 +74,44 @@ const Tracker:React.FC<TrackerProps> = ({number}) => {
     return arr;
   }
 
+  const reformWO = (val) => {
+    let arr = []
+    let d = new Date(val.created_at)
+    val.date = d;
+    val.exercises.map((el)=>{
+      arr.push(
+        {exercise: {
+          name: el.exercise_name
+        },
+        set: el.set,
+        rep: el.rep
+      })
+    })
+    return {
+      date: d,
+      workout: arr
+    }
+  }
+
+  useEffect(()=>{
+    axios.get(import.meta.env.VITE_SERVER_TRACKER_URL,
+      { params: {num: number} }
+      ).then((data)=>{
+        let arr = [];
+        data.data.forEach((val)=>{
+          arr.push(reformWO(val))
+        })
+        setTracked(arr)
+      }).catch((err)=>{console.log(err)})
+  },[])
+
   return (
     <>
     <div className = "m-4">
-    <TrackerModal addWorkout = {addWorkout}></TrackerModal>
+    <TrackerModal addWorkout = {addWorkout} u_id = {number}></TrackerModal>
     </div>
+    <button onClick = {getWorkouts}>GET 8080</button>
+    <button onClick = {postWorkout}>POST 8080</button>
     <div className = "overflow-auto h-[500px]">
     <div className="join join-vertical w-[500px]">
       {renderAccordion()}

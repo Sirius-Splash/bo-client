@@ -1,6 +1,12 @@
-import Chat from "./Chat";
+import Chat from "./DM/Chat";
+import React from "react";
 
-const DMs = (currentUserId, otherUserId) => {
+interface DMProps {
+  currentUserId: number;
+  otherUserId: number;
+}
+
+const DMs: React.FC<DMProps> = ({ currentUserId, otherUserId }) => {
   return (
     <Chat
       currentUserId={currentUserId}
