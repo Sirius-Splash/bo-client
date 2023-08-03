@@ -51,7 +51,7 @@ function PostForm () {
 
   return (
     <>
-      <button className='btn hover:bg-tertiary' onClick={openModal}>New Post</button>
+      <button className='btn btn-secondary text-primary hover:bg-accent hover:border-accent' onClick={openModal}>New Post</button>
       <dialog id='new_post_modal' className='modal-box bg-neutral' >
         <button type='button' className='btn btn-circle btn-secondary hover:bg-accent hover:border-accent text-primary absolute right-3 top-3' onClick={handleClose}>X</button>
         <h3 className='text-2xl'>New Post</h3>
