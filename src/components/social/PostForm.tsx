@@ -31,6 +31,9 @@ function PostForm () {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    if (title === '' || body === '') {
+      return;
+    }
     const post = {
       title,
       body,
@@ -50,7 +53,7 @@ function PostForm () {
 
   return (
     <>
-      <button className='btn' onClick={openModal}>New Post</button>
+      <button className='btn hover:bg-tertiary' onClick={openModal}>New Post</button>
       <dialog id='new_post_modal' className='modal-box' >
         <h3>New Post</h3>
         <form method='dialog' id='new_post_form' onSubmit={handleSubmit} >
@@ -71,7 +74,7 @@ function PostForm () {
             />
           </div>
           <button type='submit' className='btn'>Submit</button>
-          <button onClick={handleClose}>Close</button>
+          <button type='button' onClick={handleClose}>Close</button>
 
         </form>
       </dialog>
