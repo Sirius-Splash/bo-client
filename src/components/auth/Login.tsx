@@ -19,11 +19,14 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-    axios.get('http://localhost:8080/user/', {
+    axios.get('http://localhost:8080/user', {
       auth: {
         username: inputs.username,
         password: inputs.password,
-      }
+      },
+      // params: {
+      //   username
+      // }
     })
     .then((res) => {console.log('SUCCESS')})
     .catch((err) => {
@@ -48,6 +51,7 @@ export default function Login() {
 
         <div>
             <input
+              required
               type="text"
               name="username"
               value={inputs.username || ''}
@@ -68,7 +72,8 @@ export default function Login() {
 
         <div>
             <input
-              type="text"
+              required
+              type="password"
               name="password"
               value={inputs.password || ''}
               placeholder="Enter password here"

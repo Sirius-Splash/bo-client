@@ -25,7 +25,8 @@ function PostForm () {
     window.new_post_modal.showModal()
   }
 
-  function handleClose() {
+  function handleClose(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
     window.new_post_modal.close()
   }
 
@@ -50,7 +51,7 @@ function PostForm () {
 
   return (
     <>
-      <button className='btn' onClick={openModal}>New Post</button>
+      <button className='btn hover:bg-tertiary' onClick={openModal}>New Post</button>
       <dialog id='new_post_modal' className='modal-box' >
         <h3>New Post</h3>
         <form method='dialog' id='new_post_form' onSubmit={handleSubmit} >
@@ -59,10 +60,12 @@ function PostForm () {
               type='text'
               className='input input-bordered'
               onChange={(e)=>{ setTitle(e.target.value)}}
+              required
             />
             <textarea
               className='textarea textarea-bordered'
               onChange={(e)=>{ setBody(e.target.value)}}
+              required
             />
             <input
               type='file'
@@ -71,7 +74,7 @@ function PostForm () {
             />
           </div>
           <button type='submit' className='btn'>Submit</button>
-          <button onClick={handleClose}>Close</button>
+          <button type='button' onClick={handleClose}>Close</button>
 
         </form>
       </dialog>

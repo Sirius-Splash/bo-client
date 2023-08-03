@@ -36,6 +36,7 @@ const CreateAccount = ({ handleCreateAccount }) => {
 
         <div>
             <input
+              required
               type="text"
               name="username"
               value={inputs.username || ''}
@@ -56,7 +57,8 @@ const CreateAccount = ({ handleCreateAccount }) => {
 
         <div>
             <input
-              type="text"
+              required
+              type="password"
               name="password"
               value={inputs.password || ''}
               placeholder="Enter password here"
@@ -75,6 +77,7 @@ const CreateAccount = ({ handleCreateAccount }) => {
 
         <div>
             <input
+              required
               type="text"
               name="email"
               value={inputs.email || ''}
