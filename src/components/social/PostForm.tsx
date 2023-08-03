@@ -51,7 +51,7 @@ function PostForm () {
 
   return (
     <>
-      <button className='btn hover:bg-tertiary' onClick={openModal}>New Post</button>
+      <button className='btn btn-accent text-primary' onClick={openModal}>New Post</button>
       <dialog id='new_post_modal' className='modal-box' >
         <h3>New Post</h3>
         <form method='dialog' id='new_post_form' onSubmit={handleSubmit} >
