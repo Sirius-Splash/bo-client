@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import axios from "axios";
 import "../../App.css";
 
@@ -10,28 +9,79 @@ interface Message {
   created_at: string;
 }
 
-// ***----- DIRECT MESSAGE SENDER COMPONENT -----***
-const DirectMessageSender: React.FC<{
+interface DirectMessageSenderProps {
   currentUserId: number;
   otherUserId: number;
-}> = ({ currentUserId, otherUserId }) => {
-  const [messageContent, setMessageContent] = useState("");
+  setMessages: (messages: Message[]) => void;
+  messageContent: string;
+  setMessageContent: (messageContent: string) => void;
+}
 
+// helper function
+const sendMessageAndFetch = (
+  endpoint: string,
+  currentUserId: number,
+  otherUserId: number,
+  messageContent: string,
+  setMessages: (messages: Message[]) => void
+) => {
+  axios
+    .post(endpoint, {
+      sender_id: currentUserId,
+      recipient_id: otherUserId,
+      chat: messageContent,
+    })
+    .then((res) => {
+      setMessageContent("");
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
+  axios
+    .get(
+      `${endpoint}?currentUserId=${currentUserId}&otherUserId=${otherUserId}`
+    )
+    .then((res) => {
+      setMessages(res.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+// ***----- DIRECT MESSAGE SENDER COMPONENT -----***
+const DirectMessageSender: React.FC<DirectMessageSenderProps> = ({
+  currentUserId,
+  otherUserId,
+  setMessages,
+  messageContent,
+  setMessageContent,
+}) => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    axios
-      .post(`/DirectMessage`, {
-        sender_id: currentUserId,
-        recipient_id: otherUserId,
-        chat: messageContent,
-      })
-      .then((res) => {
-        setMessageContent("");
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    sendMessageAndFetch(
+      "/social",
+      currentUserId,
+      otherUserId,
+      messageContent,
+      setMessages
+    );
+    sendMessageAndFetch(
+      "/planner",
+      currentUserId,
+      otherUserId,
+      messageContent,
+      setMessages
+    );
+    sendMessageAndFetch(
+      "/tracker",
+      currentUserId,
+      otherUserId,
+      messageContent,
+      setMessages
+    );
   };
 
   return (
