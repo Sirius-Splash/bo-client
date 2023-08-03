@@ -7,7 +7,7 @@ import Planner from "./components/planner/Planner.jsx";
 import Tracker from "./components/tracker/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import DMs from "./components/chat";
+import DMs from "./components/chat/index.tsx";
 
 function App() {
   return (
