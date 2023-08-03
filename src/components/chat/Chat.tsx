@@ -18,7 +18,7 @@ const Chat: React.FC<ChatProps> = (currentUserId, otherUserId) => {
   useEffect(() => {
     axios
       .get(
-        `/DirectMessage?currentUserId1=${currentUserId}&otherUserId2=${otherUserId}`
+        `/DirectMessage?currentUserId=${currentUserId}&otherUserId=${otherUserId}`
       )
       .then((res) => {
         setMessages(res.data);

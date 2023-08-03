@@ -10,6 +10,39 @@ interface Message {
   created_at: string;
 }
 
+// helper function
+const sendMessageAndFetch = (
+  endpoint: string,
+  currentUserId: number,
+  otherUserId: number,
+  messageContent: string,
+  setMessages: (messages: string[]) => void
+) => {
+  axios
+    .post(endpoint, {
+      sender_id: currentUserId,
+      recipient_id: otherUserId,
+      chat: messageContent,
+    })
+    .then((res) => {
+      setMessageContent("");
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
+  axios
+    .get(
+      `${endpoint}?currentUserId=${currentUserId}&otherUserId=${otherUserId}`
+    )
+    .then((res) => {
+      setMessages(res.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
 // ***----- DIRECT MESSAGE SENDER COMPONENT -----***
 const DirectMessageSender: React.FC<{
   currentUserId: number;
@@ -21,28 +54,27 @@ const DirectMessageSender: React.FC<{
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    axios
-      .post(`/DirectMessage`, {
-        sender_id: currentUserId,
-        recipient_id: otherUserId,
-        chat: messageContent,
-      })
-      .then((res) => {
-        setMessageContent("");
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    axios
-      .get(
-        `/DirectMessage?currentUserId1=${currentUserId}&otherUserId2=${otherUserId}`
-      )
-      .then((res) => {
-        setMessages(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    sendMessageAndFetch(
+      "/social",
+      currentUserId,
+      otherUserId,
+      messageContent,
+      setMessages
+    );
+    sendMessageAndFetch(
+      "/planner",
+      currentUserId,
+      otherUserId,
+      messageContent,
+      setMessages
+    );
+    sendMessageAndFetch(
+      "/tracker",
+      currentUserId,
+      otherUserId,
+      messageContent,
+      setMessages
+    );
   };
 
   return (
