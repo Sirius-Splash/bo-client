@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import GPT from "./gptRoutes.ts";
+import GPT from "./gptRoutes.js";
 import "../../App.css";
 
 interface Message {

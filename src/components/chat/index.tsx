@@ -1,4 +1,4 @@
-import Chat from "./Chat";
+import Chat from "./DM/Chat";
 import React from "react";
 
 interface DMProps {

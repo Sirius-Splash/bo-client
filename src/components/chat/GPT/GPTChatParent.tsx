@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import "../../App.css";
-import GPTList from "./GPTList.tsx";
-import GPTSender from "./GPTSender.tsx";
-import GPT from "./gptRoutes.ts";
+import GPTList from "./GPTList";
+import GPTSender from "./GPTSender";
+import GPT from "./gptRoutes";
 
 interface dmList {
   id: number;
