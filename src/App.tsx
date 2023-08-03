@@ -11,12 +11,12 @@ import DMs from "./components/chat";
 
 function App() {
   return (
-    <div className="absolute top-0 w-full p-0">
-      <div className="w-full navbar bg-base-200 p-0">
-        <a className="btn btn-ghost normal-case text-xl" href="/">Navbar</a>
-        <a className="btn btn-ghost normal-case text-xl" href="/planner">Workout Planner</a>
-        <a className="btn btn-ghost normal-case text-xl" href="/tracker">Progress Tracker</a>
-        <a className="btn btn-ghost normal-case text-xl" href="/social">Clubhouse</a>
+    <div className="absolute bg-neutral top-0 w-full p-0">
+      <div className="w-full navbar bg-accent p-0">
+        <a className="btn btn-ghost text-primary hover:bg-secondary hover:text-primary text-xl" href="/">Navbar</a>
+        <a className="btn btn-ghost text-primary hover:bg-secondary hover:text-primary normal-case text-xl" href="/planner">Workout Planner</a>
+        <a className="btn btn-ghost text-primary hover:bg-secondary hover:text-primary normal-case text-xl" href="/tracker">Progress Tracker</a>
+        <a className="btn btn-ghost text-primary hover:bg-secondary hover:text-primary normal-case text-xl" href="/social">Clubhouse</a>
       </div>
       <div className="flex">
         <div className="grow">
@@ -51,7 +51,7 @@ function App() {
             </Routes>
           </BrowserRouter>
         </div>
-        <div className="p-4">
+        <div className="p-4 bg-neutral">
           <DMs />
         </div>
       </div>
