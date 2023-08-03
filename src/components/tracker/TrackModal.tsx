@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 import {exercise} from './exerciseInterface.ts';
 import Search from './Search.tsx';
 import PlusMinus from './PlusMinus.tsx';
+import axios from "axios";
 
 interface exercisePlus {
   exercise: exercise
@@ -9,12 +10,8 @@ interface exercisePlus {
   rep: number
 }
 
-const TrackerModal = ({addWorkout}) => {
+const TrackerModal = ({addWorkout, u_id}) => {
 
-  const modalRef = useRef(null);
-  const showModal = () => {
-    if (modalRef.current) modalRef.current.showModal();
-  }
   const [currSets, setCurrSets] = useState<number>(0)
   const [currReps, setCurrReps] = useState<number>(0)
   const [currExercise, setCurrExercise] = useState<exercise>();
@@ -35,6 +32,17 @@ const TrackerModal = ({addWorkout}) => {
     }
     setExerciseList(arr);
   }
+
+  const postWorkout = () => {
+    axios.post(import.meta.env.VITE_SERVER_TRACKER_URL,{
+      user_id: u_id,
+      exercises: exerciseList
+    })
+    .then((data)=>{
+      console.log('post workouts then')
+      console.log(data)
+    }).catch((err)=>{console.log('Tracker getWorkouts err: ', err)})
+}
 
   return (
     <>
@@ -67,6 +75,7 @@ const TrackerModal = ({addWorkout}) => {
           </div>
         </div>
         <button onClick = {()=>{addWorkout(exerciseList);
+          postWorkout();
           setExerciseList([]);
           window.my_modal_3.close()}} disabled = {(exerciseList.length === 0)}>Confirm Workout</button>
   </form>

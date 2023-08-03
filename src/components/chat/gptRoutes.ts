@@ -34,7 +34,7 @@ const createGpt = async (userId: number) => {
       userId: userId,
     };
 
-    const response = await axios.post(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/chat`, requestData);
+    const response = await axios.post(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/gpt`, requestData);
 
     const responseData = response.data;
     return responseData
@@ -46,7 +46,7 @@ const createGpt = async (userId: number) => {
 
 const deleteGpt = async (chatId: number) => {
   try {
-    const response = await axios.delete(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/chat/${chatId}`);
+    const response = await axios.delete(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/gpt/${chatId}`);
     const responseData = response.data;
     return responseData
 
@@ -55,4 +55,15 @@ const deleteGpt = async (chatId: number) => {
   }
 };
 
-export default { postGpt, fetchGpt, createGpt, deleteGpt };
+const fetchGptList = async (userId: number) => {
+  try {
+    const response = await axios.get(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/gpt/user/${userId}`);
+    const userChatList = response.data;
+    return userChatList;
+
+  } catch (error) {
+    console.error('Error fetching chat history:', error);
+  }
+};
+
+export default { postGpt, fetchGpt, createGpt, deleteGpt, fetchGptList};

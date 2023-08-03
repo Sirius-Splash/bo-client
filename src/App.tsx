@@ -11,25 +11,25 @@ import DMs from "./components/chat";
 
 function App() {
   return (
-    <div className="absolute top-0 w-full p-0">
-      <div className="w-full navbar bg-base-200 p-0">
+    <div className="absolute bg-neutral top-0 w-full h-full p-0">
+      <div className="w-full navbar bg-secondary p-0">
         <a
-          className="btn btn-ghost normal-case text-xl"
+          className="btn btn-ghost text-primary hover:bg-accent hover:text-primary text-xl"
           href="/">
-          Navbar
+          Gym Buddy
         </a>
         <a
-          className="btn btn-ghost normal-case text-xl"
+          className="btn btn-ghost text-primary hover:bg-accent hover:text-primary normal-case text-xl"
           href="/planner">
           Workout Planner
         </a>
         <a
-          className="btn btn-ghost normal-case text-xl"
+          className="btn btn-ghost text-primary hover:bg-accent hover:text-primary normal-case text-xl"
           href="/tracker">
           Progress Tracker
         </a>
         <a
-          className="btn btn-ghost normal-case text-xl"
+          className="btn btn-ghost text-primary hover:bg-accent hover:text-primary normal-case text-xl"
           href="/social">
           Clubhouse
         </a>
@@ -56,7 +56,7 @@ function App() {
               />
               <Route
                 path="tracker"
-                element={<Tracker number={0} />}
+                element={<Tracker number={3} />}
               />
 
               {/* New Routes Go ABOVE this line */}
@@ -67,7 +67,7 @@ function App() {
             </Routes>
           </BrowserRouter>
         </div>
-        <div className="p-4">
+        <div className="p-4 bg-neutral">
           <DMs />
         </div>
       </div>
