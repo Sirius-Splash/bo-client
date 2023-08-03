@@ -1,5 +1,5 @@
 import axios from "axios";
-import "../../App.css";
+import "../../../App.css";
 
 interface Message {
   id: number;

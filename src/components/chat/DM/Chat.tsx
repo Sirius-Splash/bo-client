@@ -1,4 +1,4 @@
-import "../../App.css";
+import "../../../App.css";
 import DirectMessageList from "./DMList";
 import DirectMessageSender from "./DMSender";
 import axios from "axios";
