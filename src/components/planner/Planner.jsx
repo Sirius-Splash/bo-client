@@ -64,7 +64,7 @@ const Planner = () => {
               <form method="dialog" className="modal-box">
                 <div className="py-4">
                   {workouts.map((workout, i) => {
-                    return <p key={i}>{workout.exercise}</p>
+                    return <p key={i}>{workout.exercise.name}</p>
                   })}
                 </div>
                 <div className="modal-action">
