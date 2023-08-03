@@ -6,7 +6,7 @@ const Exercise = ({ exercise, setWorkouts, workoutCount, setWorkoutCount, workou
   const modalRef = useRef(null);
   const [clicked, setClicked] = useState(false);
   const [hover, setHover] = useState("flex items-center py-5 bg-neutral")
-  const [workoutObj, setWorkoutObj] = useState({
+  const [workoutObj] = useState({
     exercise: exercise.name,
     sets: sets,
     reps: reps
@@ -41,7 +41,7 @@ const Exercise = ({ exercise, setWorkouts, workoutCount, setWorkoutCount, workou
 
   return (
     <React.Fragment>
-      <div className={hover} onMouseEnter={handleHover} onMouseLeave={handleLeave}>
+      <div className={hover + ' w-1/1'} onMouseEnter={handleHover} onMouseLeave={handleLeave}>
         <div className="pr-4 pl-2 w-2/3 text-left cursor-pointer" onClick={showModal}>{exercise.name.toUpperCase()}</div>
         {exercise.equipment === 'body_only' ?
             <div className="pr-4 w-1/3 text-center">BODYWEIGHT</div> :
@@ -70,7 +70,7 @@ const Exercise = ({ exercise, setWorkouts, workoutCount, setWorkoutCount, workou
           />
         </div>
       </div>
-      <div className="divider"></div>
+      {/* <div className="divider"></div> */}
       <dialog ref={modalRef} className="modal">
         <form method="dialog" className="modal-box">
           <h3 className="font-bold text-lg">{exercise.name}</h3>

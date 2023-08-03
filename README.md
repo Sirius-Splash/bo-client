@@ -27,7 +27,7 @@
    - `git rebase master`
    - Run your code again to confirm that it still functions
 6. Make a pull request
-   - Use the name of your trello ticket in your PR title and move the ticket to the "Staged for review" list 
+   - Use the name of your trello ticket in your PR title and move the ticket to the "Staged for review" list
    - Put any additional notes (potential conflicts, scoping comments, compatibility issues) in the PR body
 
 # React + TypeScript + Vite
@@ -49,7 +49,7 @@ If you are developing a production application, we recommend updating the config
    parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    project: ['./tson', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
    },
 ```

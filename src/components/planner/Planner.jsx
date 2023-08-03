@@ -12,7 +12,7 @@ const Planner = () => {
   const getExercises = () => {
     axios.get(`https://api.api-ninjas.com/v1/exercises?type=${workoutType}`, {
       headers: {
-        'X-Api-Key': ""
+        'X-Api-Key': import.meta.env.VITE_API_KEY
       }
     })
     .then(response => {
@@ -37,13 +37,15 @@ const Planner = () => {
   }
 
   const showExModal = () => {
-    if (exModalRef.current) exModalRef.current.showModal();
+    if (workouts.length) {
+      if (exModalRef.current) exModalRef.current.showModal();
+    }
   };
 
   return (
     <React.Fragment>
-      <div className="flex items-center py-5">
-        <div className="py-5">
+      <div className="flex items-center py-5 overflow-hidden" style={{maxHeight: '90vh'}}>
+        <div className="py-5 m-auto">
             <select className="select select-bordered w-full max-w-xs" value={workoutType} onChange={handleSelect}>
               <option disabled>SELECT WORKOUT TYPE</option>
               <option value="cardio">CARDIO</option>
@@ -60,14 +62,18 @@ const Planner = () => {
             </button>
             <dialog ref={exModalRef} className="modal">
               <form method="dialog" className="modal-box">
-                <p className="py-4">Example</p>
+                <div className="py-4">
+                  {workouts.map((workout, i) => {
+                    return <p key={i}>{workout.exercise}</p>
+                  })}
+                </div>
                 <div className="modal-action">
                   <button className="btn">Close</button>
                   <button className="btn" onClick={addWorkout}>Add Workout</button>
                 </div>
               </form>
             </dialog>
-            <div className="flex items-center py-5">
+            <div className="flex items-center py-5" style={{width: '65vw'}}>
               <Workouts exercises={exercises} workouts={workouts} setWorkouts={setWorkouts} workoutCount={workoutCount} setWorkoutCount={setWorkoutCount}/>
             </div>
         </div>
