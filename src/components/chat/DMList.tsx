@@ -44,10 +44,10 @@ const DirectMessageList: React.FC<{
           }`}>
           <p>{msg.chat}</p>
           <div className="chat-metadata">
-            <p className="text-xs">
+            <p className="text-xs font-thin">
               {msg.sender_id === currentUserId ? "You" : "Them"}
             </p>
-            <p className="text-xs">
+            <p className="text-xs font-thin">
               {new Date(msg.created_at).toLocaleString()}
             </p>
           </div>
