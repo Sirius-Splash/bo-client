@@ -18,11 +18,16 @@ const GptDropdownMenu = ({ setAiChatId, setAiChatTrue}) => {
   };
 
   const handleNewChat = () => {
-    // gpt.createGpt(PLACEHOLDERUSERID).then((res) => {
-    //   setData([...data, res]);
-    //   setAiChatTrue(true);
-    //   setAiChatId(res);
-    // }
+    try {
+    gpt.createGpt(PLACEHOLDERUSERID).then((res) => {
+      setData([...data, res]);
+      setAiChatTrue(true);
+      setAiChatId(res);
+    }
+    );
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleChatSelect = (chatId) => {
@@ -31,9 +36,13 @@ const GptDropdownMenu = ({ setAiChatId, setAiChatTrue}) => {
   }
 
   const handleChatDelete = (chatId) => {
-    // gpt.deleteGpt(chatId).then((res) => {
-    //   setData(data.filter((chat) => chat.id !== chatId));
-    // });
+    try {
+    gpt.deleteGpt(chatId).then((res) => {
+      setData(data.filter((chat) => chat.id !== chatId));
+    });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
