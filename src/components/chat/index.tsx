@@ -1,7 +1,7 @@
 import ChatSelectHeader from "./ChatSelect/header";
 import Chat from "./DM/Chat";
 import React from "react";
-
+import GPTChat from "./GPT/GPTChatParent";
 interface DMProps {
   currentUserId: number;
   otherUserId: number;
@@ -17,6 +17,9 @@ const DMs: React.FC<DMProps> = ({ currentUserId, otherUserId }) => {
 
   }
   , [aiChatTrue, aichatid]);
+
+
+
   return (
     <div className="flex flex-col gap-1">
       <ChatSelectHeader setAiChatTrue={setAiChatTrue} setAiChatId={setAiChatId}></ChatSelectHeader>
