@@ -2,23 +2,34 @@ import "../../App.css";
 import DirectMessageList from "./DMList";
 import DirectMessageSender from "./DMSender";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 interface ChatProps {
   currentUserId: number;
   otherUserId: number;
+  setMessages: (messages: string[]) => void;
+  messageContent: string;
+  setMessageContent: (messageContent: string) => void;
+  messages: string[];
 }
 
-const Chat: React.FC<ChatProps> = (currentUserId, otherUserId) => {
-  // state for holding message list
-  const [messages, setMessages] = useState<string[]>([]);
-
-  // any time either the userId or the otherUserId changes, the list of messages should be reloaded
-  // REPLACE ENDPOINT W SOMETHING LIKE: `/DirectMessage?currentUserId1=${currentUserId}&otherUserId2=${otherUserId}`
-  useEffect(() => {
+const Chat: React.FC<ChatProps> = (
+  currentUserId,
+  otherUserId,
+  setMessages,
+  messageContent,
+  setMessageContent,
+  messages
+) => {
+  // helper function
+  const fetchMessages = (
+    endpoint: string,
+    currentUserId: number,
+    otherUserId: number
+  ) => {
     axios
       .get(
-        `/DirectMessage?currentUserId=${currentUserId}&otherUserId=${otherUserId}`
+        `${endpoint}?currentUserId=${currentUserId}&otherUserId=${otherUserId}`
       )
       .then((res) => {
         setMessages(res.data);
@@ -26,6 +37,13 @@ const Chat: React.FC<ChatProps> = (currentUserId, otherUserId) => {
       .catch((err) => {
         console.error(err);
       });
+  };
+
+  // fetch messages on new user id
+  useEffect(() => {
+    fetchMessages("/social", currentUserId, otherUserId);
+    fetchMessages("/planner", currentUserId, otherUserId);
+    fetchMessages("/tracker", currentUserId, otherUserId);
   }, [currentUserId, otherUserId]);
 
   return (
@@ -39,6 +57,8 @@ const Chat: React.FC<ChatProps> = (currentUserId, otherUserId) => {
         currentUserId={currentUserId}
         otherUserId={otherUserId}
         setMessages={setMessages}
+        messageContent={messageContent}
+        setMessageContent={setMessageContent}
       />
     </div>
   );

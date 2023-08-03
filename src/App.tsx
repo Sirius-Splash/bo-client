@@ -8,8 +8,14 @@ import Tracker from "./components/tracker/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import DMs from "./components/chat";
+import { useState } from "react";
 
 function App() {
+  // state for posting messages
+  const [messageContent, setMessageContent] = useState("");
+  // state for holding list of messages
+  const [messages, setMessages] = useState<string[]>([]);
+
   return (
     <div className="absolute top-0 w-full p-0">
       <div className="w-full navbar bg-base-200 p-0">
@@ -46,7 +52,12 @@ function App() {
             />
           </Routes>
         </BrowserRouter>
-        <DMs />
+        <DMs
+          messageContent={messageContent}
+          setMessageContent={setMessageContent}
+          messages={messages}
+          setMessages={setMessages}
+        />
       </div>
     </div>
   );

@@ -9,10 +9,31 @@ interface Message {
 // ***----- DIRECT MESSAGE LIST COMPONENT -----***
 const DirectMessageList: React.FC<{
   currentUserId: number;
-  messages: string[];
+  messages?: Message[];
 }> = ({ currentUserId, messages }) => {
+  // dummy data for before backend is working properly
+  if (messages === undefined) {
+    messages = [
+      {
+        id: 1,
+        sender_id: 1,
+        recipient_id: 2,
+        chat: "Hi! How are you?",
+        created_at: "1000-01-01 00:00:00",
+      },
+      {
+        id: 2,
+        sender_id: 2,
+        recipient_id: 1,
+        chat: "GREAT!",
+        created_at: "1000-01-01 00:00:00",
+      },
+    ];
+    currentUserId = 1;
+  }
+
   return (
-    <div className="chat bg-base-100 text-secondary flex flex-col gap-1 mb-2 border-2 border-secondary h-96">
+    <div className="chat bg-base-100 text-secondary flex flex-col justify-end gap-1 mb-2 border-2 border-secondary h-96 px-1">
       {messages.map((msg) => (
         <div
           key={msg.id}
@@ -23,8 +44,12 @@ const DirectMessageList: React.FC<{
           }`}>
           <p>{msg.chat}</p>
           <div className="chat-metadata">
-            <p>{msg.sender_id === currentUserId ? "You" : "Them"}</p>
-            <p>{new Date(msg.created_at).toLocaleString()}</p>
+            <p className="text-xs">
+              {msg.sender_id === currentUserId ? "You" : "Them"}
+            </p>
+            <p className="text-xs">
+              {new Date(msg.created_at).toLocaleString()}
+            </p>
           </div>
         </div>
       ))}

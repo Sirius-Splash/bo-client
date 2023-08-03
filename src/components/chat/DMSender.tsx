@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import axios from "axios";
 import "../../App.css";
 
@@ -8,6 +7,14 @@ interface Message {
   recipient_id: number;
   chat: string;
   created_at: string;
+}
+
+interface DirectMessageSenderProps {
+  currentUserId: number;
+  otherUserId: number;
+  setMessages: (messages: Message[]) => void;
+  messageContent: string;
+  setMessageContent: (messageContent: string) => void;
 }
 
 // helper function
@@ -44,13 +51,13 @@ const sendMessageAndFetch = (
 };
 
 // ***----- DIRECT MESSAGE SENDER COMPONENT -----***
-const DirectMessageSender: React.FC<{
-  currentUserId: number;
-  otherUserId: number;
-  setMessages: (messages: string[]) => void;
-}> = ({ currentUserId, otherUserId, setMessages }) => {
-  const [messageContent, setMessageContent] = useState("");
-
+const DirectMessageSender: React.FC<DirectMessageSenderProps> = ({
+  currentUserId,
+  otherUserId,
+  setMessages,
+  messageContent,
+  setMessageContent,
+}) => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
