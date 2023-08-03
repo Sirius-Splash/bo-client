@@ -74,6 +74,37 @@ const Tracker:React.FC<TrackerProps> = ({number}) => {
     return arr;
   }
 
+  const reformWO = (val) => {
+    let arr = []
+    let d = new Date(val.created_at)
+    val.date = d;
+    val.exercises.map((el)=>{
+      arr.push(
+        {exercise: {
+          name: el.exercise_name
+        },
+        set: el.set,
+        rep: el.rep
+      })
+    })
+    return {
+      date: d,
+      workout: arr
+    }
+  }
+
+  useEffect(()=>{
+    axios.get(import.meta.env.VITE_SERVER_TRACKER_URL,
+      { params: {num: number} }
+      ).then((data)=>{
+        let arr = [];
+        data.data.forEach((val)=>{
+          arr.push(reformWO(val))
+        })
+        setTracked(arr)
+      }).catch((err)=>{console.log(err)})
+  },[])
+
   return (
     <>
     <div className = "m-4">
