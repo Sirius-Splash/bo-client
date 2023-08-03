@@ -11,9 +11,9 @@ import DMs from "./components/chat";
 
 function App() {
   return (
-    <div className="absolute bg-neutral top-0 w-full p-0">
+    <div className="absolute bg-neutral top-0 w-full h-full p-0">
       <div className="w-full navbar bg-secondary p-0">
-        <a className="btn btn-ghost text-primary hover:bg-accent hover:text-primary normal-case text-xl" href="/">Navbar</a>
+        <a className="btn btn-ghost text-primary hover:bg-accent hover:text-primary text-xl" href="/">Gym Buddy</a>
         <a className="btn btn-ghost text-primary hover:bg-accent hover:text-primary normal-case text-xl" href="/planner">Workout Planner</a>
         <a className="btn btn-ghost text-primary hover:bg-accent hover:text-primary normal-case text-xl" href="/tracker">Progress Tracker</a>
         <a className="btn btn-ghost text-primary hover:bg-accent hover:text-primary normal-case text-xl" href="/social">Clubhouse</a>
@@ -42,7 +42,7 @@ function App() {
                 path="tracker"
                 element={<Tracker number={3} />}
               />
-              
+
               {/* New Routes Go ABOVE this line */}
               <Route
                 path="*"
