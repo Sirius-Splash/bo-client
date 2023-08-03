@@ -1,9 +1,11 @@
-import { useState } from "react";
-import axios from 'axios'
+import { useState, useContext } from "react";
+import axios from 'axios';
+import AuthContext from "./context/AuthProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./SignUp";
 
 export default function Login() {
+  const { setAuth } = useContext(AuthContext);
   const [inputs, setInputs] = useState({});
 
   const handleSignupClick = () => {
@@ -16,23 +18,46 @@ export default function Login() {
     setInputs(values => ({...values, [name]: value}));
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(inputs);
-    axios.get('http://localhost:8080/user', {
-      auth: {
-        username: inputs.username,
-        password: inputs.password,
-      },
-      // params: {
-      //   username
-      // }
-    })
-    .then((res) => {console.log('SUCCESS')})
-    .catch((err) => {
-      console.error(err)
-      //alert
-    });
+
+    const username = inputs.username;
+    const password = inputs.password;
+    // axios.get('http://localhost:8080/user', {
+    //   auth: {
+    //     username: inputs.username,
+    //     password: inputs.password,
+    //   },
+    //   // params: {
+    //   //   username
+    //   // }
+    // })
+    // .then((res) => {console.log('SUCCESS')})
+    // .catch((err) => {
+    //   console.error(err)
+    //   //alert
+    // });
+
+    try {
+      const resp = await axios.post('http://localhost:8080/auth',
+        JSON.stringify({ username, password }),
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          withCredentials: true
+        }
+      );
+      const accessToken = resp?.data?.accessToken;
+      const roles = resp?.data?.roles;
+      setAuth({ username, password, roles, accessToken })
+    } catch (err) {
+      console.error(err);
+      alert(err);
+    }
+
+
   }
 
   return (

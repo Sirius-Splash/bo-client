@@ -7,7 +7,7 @@ const postGpt = async (chatId: number, userId: number, message: string) => {
       message: message,
     };
 
-    const response = await axios.post(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/gpt/${chatId}`, requestData);
+    const response = await axios.patch(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/gpt/${chatId}`, requestData);
 
     const responseData = response.data;
     return responseData
@@ -19,7 +19,7 @@ const postGpt = async (chatId: number, userId: number, message: string) => {
 
 const fetchGpt = async (chatId: number) => {
   try {
-    const response = await axios.get(`http://${import.meta.process.env.BACKEND}:${import.meta.env.PORT}/gpt/${chatId}`);
+    const response = await axios.get(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/gpt/${chatId}`);
     const chatHistoryData = response.data;
     return chatHistoryData;
 
@@ -28,4 +28,31 @@ const fetchGpt = async (chatId: number) => {
   }
 };
 
-export { postGpt, fetchGpt };
+const createGpt = async (userId: number) => {
+  try {
+    const requestData = {
+      userId: userId,
+    };
+
+    const response = await axios.post(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/chat`, requestData);
+
+    const responseData = response.data;
+    return responseData
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteGpt = async (chatId: number) => {
+  try {
+    const response = await axios.delete(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/chat/${chatId}`);
+    const responseData = response.data;
+    return responseData
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default { postGpt, fetchGpt, createGpt, deleteGpt };
