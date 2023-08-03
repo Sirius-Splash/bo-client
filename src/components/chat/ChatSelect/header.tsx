@@ -2,7 +2,7 @@ import React from "react";
 import GptDropDownMenu from "./GPT/GptDropdown"; // Replace the path with the actual location of DropdownMenu.js
 import ChatDropdownMenu from "./Chat/DmDropdown";
 
-const ChatSelectHeader = () => {
+const ChatSelectHeader = ({ setAiChatId, setAiChatTrue }) => {
   const chatData = [
     { name: "Chat 1", profilePictureUrl: "profile1.jpg" },
     { name: "Chat 2", profilePictureUrl: "profile2.jpg" },
@@ -17,7 +17,7 @@ const ChatSelectHeader = () => {
       <div className="flex justify-end flex-1 px-2">
         <div className="flex items-stretch">
           <ChatDropdownMenu title="DMs" data={chatData}></ChatDropdownMenu>
-          <GptDropDownMenu title="GPT" data={chatData}></GptDropDownMenu>
+          <GptDropDownMenu title="GPT" setAiChatId={setAiChatId} setAiChatTrue={setAiChatTrue}></GptDropDownMenu>
         </div>
       </div>
     </div>
