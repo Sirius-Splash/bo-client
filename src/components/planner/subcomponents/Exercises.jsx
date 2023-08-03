@@ -8,8 +8,8 @@ const Exercises = ({ exercises, setWorkouts, workoutCount, setWorkoutCount, work
       <div className="flex items-left py-5 bg-secondary">
           <div className="pr-4 pl-2 w-2/3 text-left cursor-pointer font-bold">EXERCISE</div>
           <div className="pr-4 w-1/3 text-center font-bold">EQUIPMENT</div>
-          <div className="pr-4 w-1/4 text-center font-bold">SETS</div>
-          <div className="pr-2 w-1/4 text-center font-bold">REPS</div>
+          <div className="pr-4 w-1/4 text-left font-bold">SETS</div>
+          <div className="pr-2 w-1/4 text-left font-bold">REPS</div>
           {/* <div className="pr-2 w-6 text-center font-bold">ADD WORKOUT</div> */}
         </div>
       <div className="max-h-96 overflow-y-auto">

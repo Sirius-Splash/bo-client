@@ -12,7 +12,7 @@ const Planner = () => {
   const getExercises = () => {
     axios.get(`https://api.api-ninjas.com/v1/exercises?type=${workoutType}`, {
       headers: {
-        'X-Api-Key': ""
+        'X-Api-Key': "ILx8qYo5tzMqnOLPwy8ofQ==3nBNBQN18CJH1Pxl"
       }
     })
     .then(response => {
@@ -37,7 +37,9 @@ const Planner = () => {
   }
 
   const showExModal = () => {
-    if (exModalRef.current) exModalRef.current.showModal();
+    if (workouts.length) {
+      if (exModalRef.current) exModalRef.current.showModal();
+    }
   };
 
   return (
@@ -60,7 +62,11 @@ const Planner = () => {
             </button>
             <dialog ref={exModalRef} className="modal">
               <form method="dialog" className="modal-box">
-                <p className="py-4">Example</p>
+                <div className="py-4">
+                  {workouts.map((workout, i) => {
+                    return <p key={i}>{workout.exercise}</p>
+                  })}
+                </div>
                 <div className="modal-action">
                   <button className="btn">Close</button>
                   <button className="btn" onClick={addWorkout}>Add Workout</button>
