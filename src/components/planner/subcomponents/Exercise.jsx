@@ -70,7 +70,7 @@ const Exercise = ({ exercise, setWorkouts, workoutCount, setWorkoutCount, workou
           />
         </div>
       </div>
-      <div className="divider"></div>
+      {/* <div className="divider"></div> */}
       <dialog ref={modalRef} className="modal">
         <form method="dialog" className="modal-box">
           <h3 className="font-bold text-lg">{exercise.name}</h3>

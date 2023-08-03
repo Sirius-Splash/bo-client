@@ -10,7 +10,6 @@ const Exercises = ({ exercises, setWorkouts, workoutCount, setWorkoutCount, work
           <div className="pr-4 w-1/3 text-center font-bold">EQUIPMENT</div>
           <div className="pr-4 w-1/4 text-left font-bold">SETS</div>
           <div className="pr-2 w-1/4 text-left font-bold">REPS</div>
-          {/* <div className="pr-2 w-6 text-center font-bold">ADD WORKOUT</div> */}
         </div>
       <div className="max-h-96 overflow-y-auto">
         {exercises.map((exercise, i) => {
