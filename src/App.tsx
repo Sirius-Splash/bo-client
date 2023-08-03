@@ -16,37 +16,41 @@ function App() {
         <a className="btn btn-ghost normal-case text-xl">Navbar</a>
       </div>
       <div className="flex">
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={<Login />}
-            />
-            <Route
-              path="/signup"
-              element={<Auth />}
-            />
-            <Route
-              path="social"
-              element={<Social />}
-            />
-            <Route
-              path="planner"
-              element={<Planner />}
-            />
-            <Route
-              path="tracker"
-              element={<Tracker number={0} />}
-            />
+        <div className="grow">
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                element={<Login />}
+              />
+              <Route
+                path="/signup"
+                element={<Auth />}
+              />
+              <Route
+                path="social"
+                element={<Social />}
+              />
+              <Route
+                path="planner"
+                element={<Planner />}
+              />
+              <Route
+                path="tracker"
+                element={<Tracker number={0} />}
+              />
 
-            {/* New Routes Go ABOVE this line */}
-            <Route
-              path="*"
-              element={<Notfound />}
-            />
-          </Routes>
-        </BrowserRouter>
-        <DMs />
+              {/* New Routes Go ABOVE this line */}
+              <Route
+                path="*"
+                element={<Notfound />}
+              />
+            </Routes>
+          </BrowserRouter>
+        </div>
+        <div className="p-4">
+          <DMs />
+        </div>
       </div>
     </div>
   );
