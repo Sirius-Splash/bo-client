@@ -82,6 +82,7 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
 
         <div>
             <input
+              required
               type="text"
               name="name"
               value={inputs.name || ''}
@@ -102,6 +103,7 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
 
         <div>
             <input
+              required
               type="number"
               name="age"
               min={16}
@@ -160,6 +162,7 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
 
         <div>
             <input
+              required
               type="number"
               name="heightInFeet"
               min={4}
@@ -171,6 +174,7 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
             />
 
             <input
+              required
               type="number"
               name="heightInInches"
               min={0}
@@ -193,6 +197,7 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
 
         <div>
             <input
+              required
               type="number"
               name="weight"
               min={70}
@@ -243,6 +248,7 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
           <label className="label cursor-pointer">
           <span className="label-text">I have equipment / gym</span>
             <input
+              required
               type="checkbox"
               name="equipment"
               checked={equipmentChecked}
@@ -260,6 +266,7 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
             <span className="label-text text-primary">What is your primary goal at the gym?</span>
           </label>
           <select
+            required
             className="select select-accent"
             name="goals"
             onChange={handleChange}
