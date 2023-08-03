@@ -36,7 +36,7 @@ function App() {
             />
             <Route
               path="tracker"
-              element={<Tracker number={0} />}
+              element={<Tracker number={3} />}
             />
 
             {/* New Routes Go ABOVE this line */}
