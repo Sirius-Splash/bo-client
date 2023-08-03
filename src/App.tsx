@@ -19,10 +19,26 @@ function App() {
   return (
     <div className="absolute top-0 w-full p-0">
       <div className="w-full navbar bg-base-200 p-0">
-        <a className="btn btn-ghost normal-case text-xl" href="/">Navbar</a>
-        <a className="btn btn-ghost normal-case text-xl" href="/planner">Workout Planner</a>
-        <a className="btn btn-ghost normal-case text-xl" href="/tracker">Progress Tracker</a>
-        <a className="btn btn-ghost normal-case text-xl" href="/social">Clubhouse</a>
+        <a
+          className="btn btn-ghost normal-case text-xl"
+          href="/">
+          Navbar
+        </a>
+        <a
+          className="btn btn-ghost normal-case text-xl"
+          href="/planner">
+          Workout Planner
+        </a>
+        <a
+          className="btn btn-ghost normal-case text-xl"
+          href="/tracker">
+          Progress Tracker
+        </a>
+        <a
+          className="btn btn-ghost normal-case text-xl"
+          href="/social">
+          Clubhouse
+        </a>
       </div>
       <div className="flex">
         <div className="grow">
@@ -58,23 +74,13 @@ function App() {
           </BrowserRouter>
         </div>
         <div className="p-4">
-          <DMs />
+          <DMs
+            messageContent={messageContent}
+            setMessageContent={setMessageContent}
+            messages={messages}
+            setMessages={setMessages}
+          />
         </div>
-      </div>
-    </div>
-            {/* New Routes Go ABOVE this line */}
-            <Route
-              path="*"
-              element={<Notfound />}
-            />
-          </Routes>
-        </BrowserRouter>
-        <DMs
-          messageContent={messageContent}
-          setMessageContent={setMessageContent}
-          messages={messages}
-          setMessages={setMessages}
-        />
       </div>
     </div>
   );
