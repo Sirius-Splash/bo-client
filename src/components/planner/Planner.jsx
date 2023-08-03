@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Workouts from './subcomponents/Workouts.jsx';
 
@@ -7,6 +7,7 @@ const Planner = () => {
   const [workouts, setWorkouts] = useState([]);
   const [workoutCount, setWorkoutCount] = useState(0);
   const [workoutType, setWorkoutType] = useState('SELECT WORKOUT TYPE');
+  const exModalRef = useRef(null);
 
   const getExercises = () => {
     axios.get(`https://api.api-ninjas.com/v1/exercises?type=${workoutType}`, {
@@ -31,8 +32,14 @@ const Planner = () => {
 
   const addWorkout = () => {
     console.log('Workout added!', workouts); // EDIT THIS TO SEND TO OTHER COMPONENT
+    setWorkouts([]);
+    setWorkoutCount(0);
   }
-  console.log(workouts);
+
+  const showExModal = () => {
+    if (exModalRef.current) exModalRef.current.showModal();
+  };
+
   return (
     <React.Fragment>
       <div className="flex items-center py-5">
@@ -47,10 +54,19 @@ const Planner = () => {
               <option value="stretching">STRETCHING</option>
               <option value="strongman">STRONGMAN</option>
             </select>
-            <button className="btn" onClick={addWorkout}>
+            <button className="btn" onClick={showExModal}>
               Exercises
               <div className="badge badge-secondary">{workoutCount}</div>
             </button>
+            <dialog ref={exModalRef} className="modal">
+              <form method="dialog" className="modal-box">
+                <p className="py-4">Example</p>
+                <div className="modal-action">
+                  <button className="btn">Close</button>
+                  <button className="btn" onClick={addWorkout}>Add Workout</button>
+                </div>
+              </form>
+            </dialog>
             <div className="flex items-center py-5">
               <Workouts exercises={exercises} workouts={workouts} setWorkouts={setWorkouts} workoutCount={workoutCount} setWorkoutCount={setWorkoutCount}/>
             </div>
