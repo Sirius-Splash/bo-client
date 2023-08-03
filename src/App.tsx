@@ -13,7 +13,10 @@ function App() {
   return (
     <div className="absolute top-0 w-full p-0">
       <div className="w-full navbar bg-base-200 p-0">
-        <a className="btn btn-ghost normal-case text-xl">Navbar</a>
+        <a className="btn btn-ghost normal-case text-xl" href="/">Navbar</a>
+        <a className="btn btn-ghost normal-case text-xl" href="/planner">Workout Planner</a>
+        <a className="btn btn-ghost normal-case text-xl" href="/tracker">Progress Tracker</a>
+        <a className="btn btn-ghost normal-case text-xl" href="/social">Clubhouse</a>
       </div>
       <div className="flex">
         <div className="grow">
