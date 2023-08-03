@@ -23,7 +23,7 @@ const sendMessageAndFetch = (
   currentUserId: number,
   otherUserId: number,
   messageContent: string,
-  setMessages: (messages: string[]) => void
+  setMessages: (messages: Message[]) => void
 ) => {
   axios
     .post(endpoint, {

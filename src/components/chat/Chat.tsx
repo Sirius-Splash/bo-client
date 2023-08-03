@@ -2,25 +2,19 @@ import "../../App.css";
 import DirectMessageList from "./DMList";
 import DirectMessageSender from "./DMSender";
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 interface ChatProps {
   currentUserId: number;
   otherUserId: number;
-  setMessages: (messages: string[]) => void;
-  messageContent: string;
-  setMessageContent: (messageContent: string) => void;
-  messages: string[];
 }
 
-const Chat: React.FC<ChatProps> = (
-  currentUserId,
-  otherUserId,
-  setMessages,
-  messageContent,
-  setMessageContent,
-  messages
-) => {
+const Chat: React.FC<ChatProps> = (currentUserId, otherUserId) => {
+  // state for posting messages
+  const [messageContent, setMessageContent] = useState("");
+  // state for holding list of messages
+  const [messages, setMessages] = useState<string[]>([]);
+
   // helper function
   const fetchMessages = (
     endpoint: string,

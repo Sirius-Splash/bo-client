@@ -12,7 +12,7 @@ const DirectMessageList: React.FC<{
   messages?: Message[];
 }> = ({ currentUserId, messages }) => {
   // dummy data for before backend is working properly
-  if (messages === undefined) {
+  if (messages === undefined || messages.length === 0) {
     messages = [
       {
         id: 1,
