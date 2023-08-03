@@ -32,9 +32,6 @@ function PostForm () {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    if (title === '' || body === '') {
-      return;
-    }
     const post = {
       title,
       body,
@@ -63,10 +60,12 @@ function PostForm () {
               type='text'
               className='input input-bordered'
               onChange={(e)=>{ setTitle(e.target.value)}}
+              required
             />
             <textarea
               className='textarea textarea-bordered'
               onChange={(e)=>{ setBody(e.target.value)}}
+              required
             />
             <input
               type='file'
