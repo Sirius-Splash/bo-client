@@ -8,8 +8,8 @@ const Exercise = ({ exercise, setWorkouts, workoutCount, setWorkoutCount, workou
   const [hover, setHover] = useState("flex items-center py-5 bg-neutral")
   const [workoutObj] = useState({
     exercise: exercise,
-    sets: sets,
-    reps: reps
+    set: sets,
+    rep: reps
   });
 
   const showModal = () => {
