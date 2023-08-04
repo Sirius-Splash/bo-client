@@ -22,7 +22,7 @@ const GPTChat: React.FC<{
   useEffect(() => {
     GPT.fetchGpt(chatID)
       .then((res) => {
-        setDmList(res.data);
+        setDmList(res);
       })
       .catch((err) => {
         console.error(err);
@@ -33,6 +33,7 @@ const GPTChat: React.FC<{
     <div className="flex-row">
       <GPTList
         messages={dmList}
+        setDmList={setDmList}
       />
       <GPTSender
         chatID={chatID}
