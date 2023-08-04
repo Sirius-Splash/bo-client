@@ -7,8 +7,8 @@ const GptDropdownMenu = ({ setAiChatId, setAiChatTrue}) => {
 
   React.useEffect(() => {
 
-    gpt.fetchGptList(user.auth.id).then((res) => {
-      console.log(user.auth.id)
+    gpt.fetchGptList(3).then((res) => {
+      console.log(3)
       setData(res);
     });
   }, []);
@@ -20,7 +20,7 @@ const GptDropdownMenu = ({ setAiChatId, setAiChatTrue}) => {
 
   const handleNewChat = () => {
     try {
-    gpt.createGpt(user.auth.id).then((res) => {
+    gpt.createGpt(3).then((res) => {
       console.log('creategpt',res);
       const formatedres = {id: res}
       setData([...data, formatedres]);

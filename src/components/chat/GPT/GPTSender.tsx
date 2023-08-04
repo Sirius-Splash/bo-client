@@ -27,7 +27,7 @@ const GPTSender: React.FC<{
     }
     setIsSending(true);
 
-    GPT.postGpt(chatID, user.auth.id, messageContent)
+    GPT.postGpt(chatID, 3, messageContent)
       .then((res) => {
         setMessageContent("");
         setIsSending(false);
