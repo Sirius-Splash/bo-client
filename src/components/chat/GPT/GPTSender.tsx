@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import GPT from "./gptRoutes.js";
-import "../../App.css";
+import "../../../App.css";
 
 interface Message {
   id: number;
