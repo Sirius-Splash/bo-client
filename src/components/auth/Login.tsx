@@ -51,7 +51,9 @@ export default function Login() {
       );
       const accessToken = resp?.data?.accessToken;
       const roles = resp?.data?.roles;
-      setAuth({ username, password, roles, accessToken })
+      const id = resp?.data?.id;
+      console.log(resp.data)
+      setAuth({ username, password, roles, accessToken, id })
     } catch (err) {
       console.error(err);
       alert(err);
