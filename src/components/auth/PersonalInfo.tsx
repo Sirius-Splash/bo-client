@@ -248,7 +248,6 @@ const PersonalInfo = ({ handlePersonalInfo }) => {
           <label className="label cursor-pointer">
           <span className="label-text">I have equipment / gym</span>
             <input
-              required
               type="checkbox"
               name="equipment"
               checked={equipmentChecked}

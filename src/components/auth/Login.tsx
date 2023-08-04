@@ -24,20 +24,7 @@ export default function Login() {
 
     const username = inputs.username;
     const password = inputs.password;
-    // axios.get('http://localhost:8080/user', {
-    //   auth: {
-    //     username: inputs.username,
-    //     password: inputs.password,
-    //   },
-    //   // params: {
-    //   //   username
-    //   // }
-    // })
-    // .then((res) => {console.log('SUCCESS')})
-    // .catch((err) => {
-    //   console.error(err)
-    //   //alert
-    // });
+
 
     try {
       const resp = await axios.post('http://localhost:8080/auth',

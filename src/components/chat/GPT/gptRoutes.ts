@@ -7,7 +7,7 @@ const postGpt = async (chatId: number, userId: number, message: string) => {
       message: message,
     };
 
-    const response = await axios.patch(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/gpt/${chatId}`, requestData);
+    const response = await axios.patch(`http://${import.meta.env.VITE_BACKEND}:${import.meta.env.VITE_PORT}/gpt/${chatId}`, requestData);
 
     const responseData = response.data;
     return responseData
@@ -19,8 +19,11 @@ const postGpt = async (chatId: number, userId: number, message: string) => {
 
 const fetchGpt = async (chatId: number) => {
   try {
-    const response = await axios.get(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/gpt/${chatId}`);
+    const response = await axios.get(`http://${import.meta.env.VITE_BACKEND}:${import.meta.env.VITE_PORT}/gpt/${chatId}`);
     const chatHistoryData = response.data;
+    if(chatHistoryData == undefined) {
+      return [];
+    }
     return chatHistoryData;
 
   } catch (error) {
@@ -33,8 +36,11 @@ const createGpt = async (userId: number) => {
     const requestData = {
       userId: userId,
     };
+    console.log(requestData)
 
-    const response = await axios.post(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/gpt`, requestData);
+    const response = await axios.post(`http://${import.meta.env.VITE_BACKEND}:${import.meta.env.VITE_PORT}/gpt`, {
+      'userId': userId,
+    });
 
     const responseData = response.data;
     return responseData
@@ -46,7 +52,7 @@ const createGpt = async (userId: number) => {
 
 const deleteGpt = async (chatId: number) => {
   try {
-    const response = await axios.delete(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/gpt/${chatId}`);
+    const response = await axios.delete(`http://${import.meta.env.VITE_BACKEND}:${import.meta.env.VITE_PORT}/gpt/${chatId}`);
     const responseData = response.data;
     return responseData
 
@@ -57,7 +63,8 @@ const deleteGpt = async (chatId: number) => {
 
 const fetchGptList = async (userId: number) => {
   try {
-    const response = await axios.get(`http://${import.meta.env.BACKEND}:${import.meta.env.PORT}/gpt/user/${userId}`);
+    console.log(`http://${import.meta.env.VITE_BACKEND}:${import.meta.env.VITE_PORT}/gpt/user/${userId}`)
+    const response = await axios.get(`http://${import.meta.env.VITE_BACKEND}:${import.meta.env.VITE_PORT}/gpt/user/${userId}`);
     const userChatList = response.data;
     return userChatList;
 

@@ -22,7 +22,7 @@ const DMs: React.FC<DMProps> = ({ currentUserId, otherUserId }) => {
       {aiChatTrue ? ( // If aiChatTrue is truthy, render GPTChat
         <GPTChat
           currentUserId={currentUserId}
-          chatid={aichatid}
+          chatID={aichatid}
         />
       ) : (
         // Otherwise, render Chat
