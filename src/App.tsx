@@ -8,15 +8,22 @@ import Tracker from "./components/tracker/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import DMs from "./components/chat/index.tsx";
+import { useEffect, useContext } from 'react';
+import AuthContext from "./components/auth/context/AuthProvider.tsx";
 
 function App() {
+  const user = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user])
   return (
     <div className="absolute bg-neutral top-0 w-full h-full p-0">
       <div className="w-full navbar bg-secondary p-0">
         <a
           className="btn btn-ghost text-primary hover:bg-accent hover:text-primary text-xl"
           href="/">
-          Gym Buddy
+          {user?.auth?.username || "b"}
         </a>
         <a
           className="btn btn-ghost text-primary hover:bg-accent hover:text-primary normal-case text-xl"
