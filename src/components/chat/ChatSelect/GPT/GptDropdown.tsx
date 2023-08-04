@@ -20,7 +20,8 @@ const GptDropdownMenu = ({ setAiChatId, setAiChatTrue}) => {
     try {
     gpt.createGpt(3).then((res) => {
       console.log('creategpt',res);
-      setData([...data, res]);
+      const formatedres = {id: res}
+      setData([...data, formatedres]);
       setAiChatTrue(true);
       setAiChatId(res);
     }
