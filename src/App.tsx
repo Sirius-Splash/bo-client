@@ -52,7 +52,7 @@ function App() {
               />
               <Route
                 path="planner"
-                element={<Planner />}
+                element={<Planner number={3}/>}
               />
               <Route
                 path="tracker"

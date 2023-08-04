@@ -7,7 +7,7 @@ const Exercise = ({ exercise, setWorkouts, workoutCount, setWorkoutCount, workou
   const [clicked, setClicked] = useState(false);
   const [hover, setHover] = useState("flex items-center py-5 bg-neutral")
   const [workoutObj] = useState({
-    exercise: exercise.name,
+    exercise: exercise,
     sets: sets,
     reps: reps
   });

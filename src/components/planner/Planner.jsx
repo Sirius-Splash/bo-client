@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Workouts from './subcomponents/Workouts.jsx';
 
-const Planner = () => {
+const Planner = ({ number }) => {
   const [exercises, setExercises] = useState([]);
   const [workouts, setWorkouts] = useState([]);
   const [workoutCount, setWorkoutCount] = useState(0);
@@ -30,17 +30,28 @@ const Planner = () => {
     getExercises();
   }, [workoutType]);
 
-  const addWorkout = () => {
-    console.log('Workout added!', workouts); // EDIT THIS TO SEND TO OTHER COMPONENT
-    setWorkouts([]);
-    setWorkoutCount(0);
-  }
-
   const showExModal = () => {
     if (workouts.length) {
       if (exModalRef.current) exModalRef.current.showModal();
     }
   };
+
+  const postWorkout = () => {
+    axios.post(import.meta.env.VITE_SERVER_TRACKER_URL,{
+      user_id: number,
+      exercises: workouts
+    })
+    .then((data)=>{
+      console.log('Posting new workout', data);
+    })
+    .catch((err)=>{console.log('Error posting new workout', err)})
+  };
+
+    const addWorkout = () => {
+      postWorkout();
+      setWorkouts([]);
+      setWorkoutCount(0);
+    };
 
   return (
     <React.Fragment>
@@ -64,7 +75,7 @@ const Planner = () => {
               <form method="dialog" className="modal-box">
                 <div className="py-4">
                   {workouts.map((workout, i) => {
-                    return <p key={i}>{workout.exercise}</p>
+                    return <p key={i}>{workout.exercise.name}</p>
                   })}
                 </div>
                 <div className="modal-action">
