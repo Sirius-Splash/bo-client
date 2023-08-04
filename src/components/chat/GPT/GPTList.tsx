@@ -27,7 +27,7 @@ const GPTList: React.FC<{
           className={`chat-bubble ${
             msg.role === 'user'
               ? "self-end bg-accent text-primary"
-              : "self-start bg-neutral text-primary"
+              : "self-start bg-tertiary text-primary"
           }`}>
           <p>{msg.content}</p>
           <div className="chat-metadata">
