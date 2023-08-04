@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import axios from 'axios';
 import Workouts from './subcomponents/Workouts.jsx';
-
+import AuthContext from '../auth/context/AuthProvider';
 const Planner = ({ number }) => {
   const [exercises, setExercises] = useState([]);
   const [workouts, setWorkouts] = useState([]);
   const [workoutCount, setWorkoutCount] = useState(0);
   const [workoutType, setWorkoutType] = useState('SELECT WORKOUT TYPE');
   const exModalRef = useRef(null);
+  const user = useContext(AuthContext);
 
   const getExercises = () => {
     axios.get(`https://api.api-ninjas.com/v1/exercises?type=${workoutType}`, {
@@ -38,7 +39,7 @@ const Planner = ({ number }) => {
 
   const postWorkout = () => {
     axios.post(import.meta.env.VITE_SERVER_TRACKER_URL,{
-      user_id: number,
+      user_id: user.auth.id,
       exercises: workouts
     })
     .then((data)=>{

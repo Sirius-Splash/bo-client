@@ -14,9 +14,6 @@ import AuthContext from "./components/auth/context/AuthProvider.tsx";
 function App() {
   const user = useContext(AuthContext);
 
-  useEffect(() => {
-    console.log(user);
-  }, [user])
   return (
     <div className="absolute bg-neutral top-0 w-full h-full p-0">
       <div className="w-full navbar bg-secondary p-0">

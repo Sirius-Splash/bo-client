@@ -40,7 +40,7 @@ function PostForm () {
       photos,
       user_id: user.auth.id
     }
-    console.log(user)
+    console.log(user.auth)
     axios.post(URL, post)
     .then(()=>{
       window.new_post_modal.close()

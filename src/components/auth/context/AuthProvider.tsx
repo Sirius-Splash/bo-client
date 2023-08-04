@@ -6,12 +6,10 @@ const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({});
 
-  useEffect(() => {console.log(auth)}, [auth])
   useEffect(() => {
     const u = Cookie.getCookie('username');
     const p = Cookie.getCookie('password');
     if (u && p) {
-      console.log(u, p)
       axios.post('http://localhost:8080/auth',
         JSON.stringify({ username: u, password: p }),
         {
@@ -21,7 +19,6 @@ export const AuthProvider = ({ children }) => {
           withCredentials: true
         }
       ).then((resp) => {
-        console.log("CHECK SUCCESS");
 
         const username = u;
         const accessToken = resp?.data?.accessToken;
