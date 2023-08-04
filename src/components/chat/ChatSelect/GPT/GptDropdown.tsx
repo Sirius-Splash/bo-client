@@ -1,12 +1,14 @@
 import React from "react";
 import gpt from "../../GPT/gptRoutes";
-
+import AuthContext from "../../../auth/context/AuthProvider";
 const GptDropdownMenu = ({ setAiChatId, setAiChatTrue}) => {
   const [data, setData] = React.useState([]);
+  const user  = React.useContext(AuthContext);
 
   React.useEffect(() => {
 
-    gpt.fetchGptList(3).then((res) => {
+    gpt.fetchGptList(user.auth.id).then((res) => {
+      console.log(user.auth.id)
       setData(res);
     });
   }, []);
@@ -18,7 +20,7 @@ const GptDropdownMenu = ({ setAiChatId, setAiChatTrue}) => {
 
   const handleNewChat = () => {
     try {
-    gpt.createGpt(3).then((res) => {
+    gpt.createGpt(user.auth.id).then((res) => {
       console.log('creategpt',res);
       const formatedres = {id: res}
       setData([...data, formatedres]);
