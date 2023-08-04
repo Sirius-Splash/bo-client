@@ -3,11 +3,8 @@ import GPT from "./gptRoutes.js";
 import "../../../App.css";
 
 interface Message {
-  id: number;
-  ai_chat_id: number;
-  is_ai: number;
-  message: string;
-  created_at: string;
+  role: string;
+  content: string;
 }
 
 // ***----- DIRECT MESSAGE SENDER COMPONENT -----***
@@ -18,17 +15,23 @@ const GPTSender: React.FC<{
 }> = ({ chatID, dmList, setDmList}) => {
   const [messageContent, setMessageContent] = useState("");
   const [isSending, setIsSending] = useState(false);
+  console.log(dmList);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    setDmList([...dmList, {id: dmList[dmList.length - 1].id, ai_chat_id: chatID, is_ai: 0, message: messageContent, created_at: Date.now().toString()}]);
+    if(dmList.length === 0) {
+      setDmList([{content: messageContent, role: "user"}]);
+    } else {
+    setDmList([...dmList, {content: messageContent, role: "user"}]);
+    }
     setIsSending(true);
 
-    GPT.postGpt(chatID, PLACEHOLDERUSERID, messageContent)
+    GPT.postGpt(chatID, 3, messageContent)
       .then((res) => {
         setMessageContent("");
         setIsSending(false);
-        setDmList([...dmList, {id: res.data.id, ai_chat_id: res.data.ai_chat_id, is_ai: res.data.is_ai, message: res.data.message, created_at: res.data.created_at}])
+        console.log(res);
+        setDmList(dmList => [...dmList, {content: res, role: "ai"}]);
       })
       .catch((err) => {
         console.error(err);
