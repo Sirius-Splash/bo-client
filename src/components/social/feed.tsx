@@ -1,8 +1,9 @@
 import Post from "./post";
 import axios from "axios";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { postInterface } from "./interfaces";
 import PostForm from "./PostForm";
+
 //#7F7B82
 function Feed() {
 

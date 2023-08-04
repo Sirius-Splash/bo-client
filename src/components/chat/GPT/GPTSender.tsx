@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import GPT from "./gptRoutes.js";
 import "../../../App.css";
-
+import AuthContext from "../../auth/context/AuthProvider.js";
 interface Message {
   role: string;
   content: string;
@@ -15,6 +15,7 @@ const GPTSender: React.FC<{
 }> = ({ chatID, dmList, setDmList}) => {
   const [messageContent, setMessageContent] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const user = useContext(AuthContext);
   console.log(dmList);
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -26,7 +27,7 @@ const GPTSender: React.FC<{
     }
     setIsSending(true);
 
-    GPT.postGpt(chatID, 3, messageContent)
+    GPT.postGpt(chatID, user.auth.id, messageContent)
       .then((res) => {
         setMessageContent("");
         setIsSending(false);
