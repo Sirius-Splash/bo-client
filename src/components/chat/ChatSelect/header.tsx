@@ -16,8 +16,14 @@ const ChatSelectHeader = ({ setAiChatId, setAiChatTrue }) => {
       </div>
       <div className="flex justify-end flex-1 px-2">
         <div className="flex items-stretch">
-          <ChatDropdownMenu title="DMs" data={chatData}></ChatDropdownMenu>
-          <GptDropDownMenu title="GPT" setAiChatId={setAiChatId} setAiChatTrue={setAiChatTrue}></GptDropDownMenu>
+          <ChatDropdownMenu
+            title="DMs"
+            data={chatData}
+            setAiChatTrue={setAiChatTrue}></ChatDropdownMenu>
+          <GptDropDownMenu
+            title="GPT"
+            setAiChatId={setAiChatId}
+            setAiChatTrue={setAiChatTrue}></GptDropDownMenu>
         </div>
       </div>
     </div>
