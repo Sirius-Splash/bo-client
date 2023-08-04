@@ -34,11 +34,11 @@ const Chat: React.FC<ChatProps> = (currentUserId, otherUserId) => {
   };
 
   // fetch messages on new user id
-  useEffect(() => {
-    fetchMessages("/social", currentUserId, otherUserId);
-    fetchMessages("/planner", currentUserId, otherUserId);
-    fetchMessages("/tracker", currentUserId, otherUserId);
-  }, [currentUserId, otherUserId]);
+  // useEffect(() => {
+  //   fetchMessages("/social", currentUserId, otherUserId);
+  //   fetchMessages("/planner", currentUserId, otherUserId);
+  //   fetchMessages("/tracker", currentUserId, otherUserId);
+  // }, [currentUserId, otherUserId]);
 
   return (
     <div className="flex-row">

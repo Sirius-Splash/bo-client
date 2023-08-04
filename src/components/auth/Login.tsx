@@ -3,6 +3,7 @@ import axios from 'axios';
 import AuthContext from "./context/AuthProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./SignUp";
+import Planner from '../planner/subcomponents/Planner'
 
 export default function Login() {
   const { setAuth } = useContext(AuthContext);
@@ -44,7 +45,8 @@ export default function Login() {
       //setup react router to landing
       console.log(resp.headers)
       console.log(resp.data)
-      setAuth({ username, password, roles, accessToken, id })
+      setAuth({ username, password, accessToken, id });
+      document.location.href = '/planner';
     } catch (err) {
       console.error(err);
       alert(err);
