@@ -1,11 +1,13 @@
 import Comment from "./comment";
 import axios from "axios";
 import { commentInterface, postInterface } from "./interfaces";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from "../auth/context/AuthProvider";
 
 function Post({ post } : {post: postInterface}) {
   const [comments, setComments] = useState<commentInterface[]>([]);
   const [commentBody, setCommentBody] = useState<string>('');
+  const user = useContext(AuthContext);
 
   const getComments = () => {
     axios.get(import.meta.env.VITE_SERVER_URL + '/comments', {
@@ -42,7 +44,7 @@ function Post({ post } : {post: postInterface}) {
         if (e.key === 'Enter' && commentBody !== '') {
           axios.post(import.meta.env.VITE_SERVER_URL + '/comments',
           {
-            user_id: 4,
+            user_id: user.auth.id,
             post_id: post.id,
             body: commentBody,
           }).then(() => {
