@@ -1,7 +1,7 @@
 import React from "react";
 
 const ChatDropdownMenu = ({ title, data, setAiChatTrue }) => {
-  const handleChatSelect = (chatId) => {
+  const handleChatSelect = () => {
     setAiChatTrue(false);
   };
 
@@ -19,7 +19,7 @@ const ChatDropdownMenu = ({ title, data, setAiChatTrue }) => {
           <li key={index}>
             <a
               className="flex items-center space-x-2"
-              onClick={() => handleChatSelect(index.id)}>
+              onClick={() => handleChatSelect()}>
               <img
                 src={"../../../../assets/bowser.png"}
                 alt="Bowser"
