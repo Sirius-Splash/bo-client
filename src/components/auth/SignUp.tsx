@@ -30,7 +30,7 @@ const SignUp = () => {
       ...personalDetails
     };
 
-    axios.post('http://localhost:8080/user', completedDetails)
+    axios.post('http://localhost:8080/register', completedDetails)
     .then(() => setStep(step + 1))
     .catch((err) => {
       console.error(err);

@@ -24,20 +24,7 @@ export default function Login() {
 
     const username = inputs.username;
     const password = inputs.password;
-    // axios.get('http://localhost:8080/user', {
-    //   auth: {
-    //     username: inputs.username,
-    //     password: inputs.password,
-    //   },
-    //   // params: {
-    //   //   username
-    //   // }
-    // })
-    // .then((res) => {console.log('SUCCESS')})
-    // .catch((err) => {
-    //   console.error(err)
-    //   //alert
-    // });
+
 
     try {
       const resp = await axios.post('http://localhost:8080/auth',
@@ -52,6 +39,10 @@ export default function Login() {
       const accessToken = resp?.data?.accessToken;
       const roles = resp?.data?.roles;
       setAuth({ username, password, roles, accessToken })
+
+      //setup react router to landing
+      console.log(resp.headers)
+      console.log(resp.data)
     } catch (err) {
       console.error(err);
       alert(err);
