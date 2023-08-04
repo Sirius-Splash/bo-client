@@ -71,7 +71,7 @@ const GptDropdownMenu = ({ setAiChatId, setAiChatTrue}) => {
             </a>
           </li>
         ))}
-        <button class="btn btn-sm btn-outline btn-accent" onClick={handleNewChat}>New Chat</button>
+        <button className="btn btn-sm btn-outline btn-accent" onClick={handleNewChat}>New Chat</button>
       </ul>
     </div>
   );

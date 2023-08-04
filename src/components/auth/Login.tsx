@@ -37,8 +37,12 @@ export default function Login() {
         }
       );
       const accessToken = resp?.data?.accessToken;
-      const roles = resp?.data?.roles;
       const id = resp?.data?.id;
+      setAuth({ username, accessToken, id })
+      document.cookie = `username=${username}`;
+      document.cookie = `password=${password}`;
+      //setup react router to landing
+      console.log(resp.headers)
       console.log(resp.data)
       setAuth({ username, password, roles, accessToken, id })
     } catch (err) {

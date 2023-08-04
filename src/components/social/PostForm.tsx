@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios'
+import AuthContext from '../auth/context/AuthProvider'
 
 interface Modal {
   showModal: VoidFunction,
@@ -20,6 +21,7 @@ function PostForm () {
   const [title, setTitle] = React.useState('')
   const [body, setBody] = React.useState('')
   const [photos, setPhotos] = React.useState([])
+  const user = useContext(AuthContext);
 
   function openModal() {
     window.new_post_modal.showModal()
@@ -36,8 +38,9 @@ function PostForm () {
       title,
       body,
       photos,
-      user_id: session.userID
+      user_id: user.auth.id
     }
+    console.log(user.auth)
     axios.post(URL, post)
     .then(()=>{
       window.new_post_modal.close()
