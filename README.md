@@ -1,4 +1,59 @@
-# Sirius Splash Client App
+# Jym Brah Fitness Site
+
+Jym Brah is a fitness tracker and social media site that lets gym goers learn new workouts, ask AI for recommendations, and share their gains with friends.
+
+## Table of Contents
+
+1. [Project Description](#project-description)
+2. [Technologies Used](#technologies-used)
+3. [Demo](#demo)
+3. [How to Install and Run this Project](#how-to-install-and-run-this-project)
+4. [Future Enchancements](#future-enhancements)
+
+# Project Description
+
+We created this project from scratch over the course of a week as part of the Hack Reactor Software Engineering Immersive. We were given a “client” that requested that we build a fitness site where gym goers can track their workouts, interact with friends via a social media feed, and receive recommendations from AI.
+
+# Technologies Used
+
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![DaisyUI](https://img.shields.io/badge/daisyui-5A0EF8?style=for-the-badge&logo=daisyui&logoColor=white) ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+
+# Demo
+
+## Login and Auth
+![HireUp Landing Page Demo 2](https://user-images.githubusercontent.com/93889833/235370770-3bde8c7e-c2e0-448d-94c2-bedd8efb7888.gif)
+## Workout Planner
+![HireUp Explore Page Demo](https://user-images.githubusercontent.com/93889833/235371681-af2001db-236d-4a23-9487-cda14abaf4ac.gif)
+## Progress Tracker
+![HireUp Profile Page Demo](https://user-images.githubusercontent.com/93889833/235371792-4ad6860e-a66b-45da-b39e-da37b58700e1.gif)
+## Chat
+![HireUp Chat Page Demo](https://user-images.githubusercontent.com/93889833/235372128-ea1d4808-11ea-4610-bc1a-ad1e3a5f3ee5.gif)
+## Social Feed
+![HireUp Freelancer and Proposals Form Pages Demo 2](https://user-images.githubusercontent.com/93889833/235373369-b7f4de7e-ca1c-4c53-b278-5fa828ab27ec.gif)
+
+# How to Install and Run this Project
+
+1. Clone the repo to your computer in your desired folder
+
+`git clone git@github.com:Sirius-Sploosh/bo-client.git`
+
+2. Install all dependencies by running
+
+`npm install`
+
+3. It's time to start your development server! Run
+
+`npm run dev`
+
+in your command line, and check out the project at localhost:5173 in your browser. Have fun!
+
+# Future Enhancements
+
+Given the extremely tight turnaround we faced and the high standards we hold for ourselves, there are a few things we would love to improve when time allows. Some of these include:
+
+ * Robust unit testing
+ * Create cohesive styling across pages
+ * Integrate video chat with user messaging
 
 # Ticketing Guidelines
 1. Always make or claim a ticket before doing any work
