@@ -63,7 +63,6 @@ const deleteGpt = async (chatId: number) => {
 
 const fetchGptList = async (userId: number) => {
   try {
-    console.log(`http://${import.meta.env.VITE_BACKEND}:${import.meta.env.VITE_PORT}/gpt/user/${userId}`)
     const response = await axios.get(`http://${import.meta.env.VITE_BACKEND}:${import.meta.env.VITE_PORT}/gpt/user/${userId}`);
     const userChatList = response.data;
     return userChatList;

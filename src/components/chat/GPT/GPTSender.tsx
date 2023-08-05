@@ -16,7 +16,6 @@ const GPTSender: React.FC<{
   const [messageContent, setMessageContent] = useState("");
   const [isSending, setIsSending] = useState(false);
   const user = useContext(AuthContext);
-  console.log(dmList);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -31,7 +30,6 @@ const GPTSender: React.FC<{
       .then((res) => {
         setMessageContent("");
         setIsSending(false);
-        console.log(res);
         setDmList(dmList => [...dmList, {content: res, role: "ai"}]);
       })
       .catch((err) => {
