@@ -21,15 +21,15 @@ We created this project from scratch over the course of a week as part of the Ha
 # Demo
 
 ## Login and Auth
-![HireUp Landing Page Demo 2](https://user-images.githubusercontent.com/93889833/235370770-3bde8c7e-c2e0-448d-94c2-bedd8efb7888.gif)
+coming soon . . . .
 ## Workout Planner
-![HireUp Explore Page Demo](https://user-images.githubusercontent.com/93889833/235371681-af2001db-236d-4a23-9487-cda14abaf4ac.gif)
+coming soon . . . .
 ## Progress Tracker
-![HireUp Profile Page Demo](https://user-images.githubusercontent.com/93889833/235371792-4ad6860e-a66b-45da-b39e-da37b58700e1.gif)
+coming soon . . . .
 ## Chat
-![HireUp Chat Page Demo](https://user-images.githubusercontent.com/93889833/235372128-ea1d4808-11ea-4610-bc1a-ad1e3a5f3ee5.gif)
+coming soon . . . .
 ## Social Feed
-![HireUp Freelancer and Proposals Form Pages Demo 2](https://user-images.githubusercontent.com/93889833/235373369-b7f4de7e-ca1c-4c53-b278-5fa828ab27ec.gif)
+coming soon . . . .
 
 # How to Install and Run this Project
 
